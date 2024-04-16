@@ -7,7 +7,7 @@ public class CoinGenerator : MonoBehaviour
     [SerializeField] private Transform pfCoin = default;
     [SerializeField] private Transform pfCoinGroup = default;
     [SerializeField] private Transform childHolder = default;
-    [SerializeField] private Texture2D[] textPattern = default;
+    [SerializeField] private Texture2D[] alphabetPatterns = default;
 
     [Header("Generate Configs")]
     [SerializeField] private bool generateText = default;
@@ -88,6 +88,12 @@ public class CoinGenerator : MonoBehaviour
     //======================================================================
     public Transform GenerateRandom()
     {
+        // ZOMBIES
+        if (generatePattern == false && generateText)
+            GenerateText();
+        else if (generateText == false && generatePattern)
+            GeneratePattern();
+
         float f = Random.value;
         if (f <= textRatioWeigth)
             return GenerateText();
@@ -112,59 +118,59 @@ public class CoinGenerator : MonoBehaviour
             if (c == ' ')
                 spawnPosition.x += OFFSET_UNIT;
             else if (c == '!')
-                PlaceCoinBasedOnChar(textPattern[0], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[0], spawnPosition).SetParent(parent);
             else if (c == 'a' | c == 'A')
-                PlaceCoinBasedOnChar(textPattern[1], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[1], spawnPosition).SetParent(parent);
             else if (c == 'b' | c == 'B')
-                PlaceCoinBasedOnChar(textPattern[2], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[2], spawnPosition).SetParent(parent);
             else if (c == 'c' | c == 'C')
-                PlaceCoinBasedOnChar(textPattern[3], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[3], spawnPosition).SetParent(parent);
             else if (c == 'd' | c == 'D')
-                PlaceCoinBasedOnChar(textPattern[4], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[4], spawnPosition).SetParent(parent);
             else if (c == 'e' | c == 'E')
-                PlaceCoinBasedOnChar(textPattern[5], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[5], spawnPosition).SetParent(parent);
             else if (c == 'f' | c == 'F')
-                PlaceCoinBasedOnChar(textPattern[6], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[6], spawnPosition).SetParent(parent);
             else if (c == 'g' | c == 'G')
-                PlaceCoinBasedOnChar(textPattern[7], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[7], spawnPosition).SetParent(parent);
             else if (c == 'h' | c == 'H')
-                PlaceCoinBasedOnChar(textPattern[8], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[8], spawnPosition).SetParent(parent);
             else if (c == 'i' | c == 'I')
-                PlaceCoinBasedOnChar(textPattern[9], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[9], spawnPosition).SetParent(parent);
             else if (c == 'j' | c == 'J')
-                PlaceCoinBasedOnChar(textPattern[10], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[10], spawnPosition).SetParent(parent);
             else if (c == 'k' | c == 'K')
-                PlaceCoinBasedOnChar(textPattern[11], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[11], spawnPosition).SetParent(parent);
             else if (c == 'l' | c == 'L')
-                PlaceCoinBasedOnChar(textPattern[12], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[12], spawnPosition).SetParent(parent);
             else if (c == 'm' | c == 'M')
-                PlaceCoinBasedOnChar(textPattern[13], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[13], spawnPosition).SetParent(parent);
             else if (c == 'n' | c == 'N')
-                PlaceCoinBasedOnChar(textPattern[14], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[14], spawnPosition).SetParent(parent);
             else if (c == 'o' | c == 'O')
-                PlaceCoinBasedOnChar(textPattern[15], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[15], spawnPosition).SetParent(parent);
             else if (c == 'p' | c == 'P')
-                PlaceCoinBasedOnChar(textPattern[16], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[16], spawnPosition).SetParent(parent);
             else if (c == 'q' | c == 'Q')
-                PlaceCoinBasedOnChar(textPattern[17], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[17], spawnPosition).SetParent(parent);
             else if (c == 'r' | c == 'R')
-                PlaceCoinBasedOnChar(textPattern[18], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[18], spawnPosition).SetParent(parent);
             else if (c == 's' | c == 'S')
-                PlaceCoinBasedOnChar(textPattern[19], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[19], spawnPosition).SetParent(parent);
             else if (c == 't' | c == 'T')
-                PlaceCoinBasedOnChar(textPattern[20], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[20], spawnPosition).SetParent(parent);
             else if (c == 'u' | c == 'U')
-                PlaceCoinBasedOnChar(textPattern[21], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[21], spawnPosition).SetParent(parent);
             else if (c == 'v' | c == 'V')
-                PlaceCoinBasedOnChar(textPattern[22], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[22], spawnPosition).SetParent(parent);
             else if (c == 'w' | c == 'W')
-                PlaceCoinBasedOnChar(textPattern[23], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[23], spawnPosition).SetParent(parent);
             else if (c == 'x' | c == 'X')
-                PlaceCoinBasedOnChar(textPattern[24], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[24], spawnPosition).SetParent(parent);
             else if (c == 'y' | c == 'Y')
-                PlaceCoinBasedOnChar(textPattern[25], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[25], spawnPosition).SetParent(parent);
             else if (c == 'z' | c == 'Z')
-                PlaceCoinBasedOnChar(textPattern[26], spawnPosition).SetParent(parent);
+                PlaceCoinBasedOnChar(alphabetPatterns[26], spawnPosition).SetParent(parent);
         }
 
         return parent;
