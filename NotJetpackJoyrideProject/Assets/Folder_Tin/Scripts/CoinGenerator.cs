@@ -1,12 +1,12 @@
+using UnityEditor;
 using UnityEngine;
 
 public class CoinGenerator : MonoBehaviour
 {
     [Header("General")]
-    [SerializeField] private bool generateOnStart = default;
+    [SerializeField] private Transform pfCoinParent = default;
+    [SerializeField] private Transform pfCoinHolder = default;
     [SerializeField] private Transform pfCoin = default;
-    [SerializeField] private Transform pfCoinGroup = default;
-    [SerializeField] private Transform childHolder = default;
     [SerializeField] private Texture2D[] alphabetPatterns = default;
 
     [Header("Generate Configs")]
@@ -21,14 +21,20 @@ public class CoinGenerator : MonoBehaviour
     private const float OFFSET_UNIT = 1.0f;
     Vector2 spawnPosition = Vector2.zero;
     private float textRatioWeigth = default;
+    private int poolSize = 200;
 
     private void Start()
     {
+        // Pooling pfCoin
+        for (int i = 0; i < poolSize; i++)
+        {
+            Transform coin = Instantiate(pfCoin, transform);
+            coin.gameObject.SetActive(false);
+            coin.gameObject.GetComponent<PrefabCoin>().Parent = transform;
+        }
+
         // Compute weight
         textRatioWeigth = textWeigth / (textWeigth + patternWeigth);
-
-        if (generateOnStart == false)
-            return;
 
         GenerateRandom();
     }
@@ -62,27 +68,40 @@ public class CoinGenerator : MonoBehaviour
         i = 0;
 
         // Instantiate holder transform
-        Transform holder = Instantiate(childHolder, Vector3.zero, Quaternion.identity);
+        Transform holder = Instantiate(pfCoinHolder, Vector3.zero, Quaternion.identity);
 
         // Instantiate coins
         foreach (Vector3 pos in spawnPositions)
         {
             Color c = pix[i];
+
             if (c.Equals(Color.black))
-                Instantiate(pfCoin, pos, Quaternion.identity, holder);
+            {
+                foreach (Transform coin in transform)
+                {
+                    if (coin.gameObject.activeInHierarchy == false)
+                    {
+                        coin.position = pos;
+                        coin.SetParent(holder);
+                        coin.gameObject.SetActive(true);
+                        break;
+                    }
+                }
+            }
 
             i++;
         }
 
+        holder.GetComponent<MoveLeft>().IsMoving = true;
         return holder;
     }
 
     private Transform PlaceCoinBasedOnChar(Texture2D pattern, Vector2 position)
     {
-        Transform group = PlaceCoin(pattern, position);
+        Transform parent = PlaceCoin(pattern, position);
         spawnPosition.x += OFFSET_UNIT * pattern.width + OFFSET_UNIT;
 
-        return group;
+        return parent;
     }
 
     //======================================================================
@@ -110,7 +129,7 @@ public class CoinGenerator : MonoBehaviour
         string text = coinText[Random.Range(0, coinText.Length)];
 
         // Instantiate parent transform
-        Transform parent = Instantiate(pfCoinGroup, Vector3.zero, Quaternion.identity);
+        Transform parent = Instantiate(pfCoinParent, Vector3.zero, Quaternion.identity);
 
         spawnPosition = Vector2.zero;
         foreach (char c in text)
