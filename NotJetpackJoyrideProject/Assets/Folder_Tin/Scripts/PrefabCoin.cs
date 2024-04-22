@@ -15,7 +15,7 @@ public class PrefabCoin : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            BackToCoinPool();
+            CollectCoin();
         }
     }
 
@@ -61,6 +61,6 @@ public class PrefabCoin : MonoBehaviour
     private void CollectCoin()
     {
         Instantiate(coinCollectParticle.gameObject, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        BackToCoinPool();
     }
 }
