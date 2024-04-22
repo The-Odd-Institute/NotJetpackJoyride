@@ -5,13 +5,23 @@ public class PrefabCoin : MonoBehaviour
     [SerializeField] ParticleSystem coinCollectParticle;
 
     private Animator animator;
-    private const float ANIMATION_DELAY_TIME = 1.0f;
+    private const float ANIMATION_DELAY_TIME = 0.75f;
     private float delayTimer = default;
+
+    private Transform parent = default;
+    public Transform Parent { set => parent = value; }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            BackToCoinPool();
+        }
+    }
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        animator.SetBool("runAnimation", true);
     }
 
     private void Update()
@@ -41,12 +51,11 @@ public class PrefabCoin : MonoBehaviour
         delayTimer = ANIMATION_DELAY_TIME;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void BackToCoinPool()
     {
-        if (collision.tag == "Player")
-        {
-            CollectCoin();
-        }
+        gameObject.SetActive(false);
+        gameObject.transform.position = Vector3.zero;
+        gameObject.transform.SetParent(parent);
     }
 
     private void CollectCoin()
