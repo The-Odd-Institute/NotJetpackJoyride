@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6105549536347625142
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2783428594131270989}
+  - component: {fileID: 3227252473658935951}
+  m_Layer: 0
+  m_Name: CoinGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2783428594131270989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105549536347625142}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3227252473658935951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6105549536347625142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2880a609fad221c4b81956e9f0c25df6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pfCoinParent: {fileID: 6591145068932144471, guid: b1c732671dc618248ac8cc5e9c32d81f, type: 3}
+  pfCoinHolder: {fileID: 3075979880417028337, guid: 37543b59439540e4f9ae76620c3ec70a, type: 3}
+  pfCoin: {fileID: 8669420181434947331, guid: 424770a1fbaa64046a787e6ebb4dc479, type: 3}
+  alphabetPatterns:
+  - {fileID: 2800000, guid: c5683d5765f10cd42959c4885e1e424c, type: 3}
+  - {fileID: 2800000, guid: 2a8bfeb2c89e18945b20c0509f74fde0, type: 3}
+  - {fileID: 2800000, guid: a073efdf320fe8f46a9a59a3e344b912, type: 3}
+  - {fileID: 2800000, guid: fb0682d04151c5c4882b03b4300b7056, type: 3}
+  - {fileID: 2800000, guid: 3548e8d9f5e56ba4b8d227b469c8b66d, type: 3}
+  - {fileID: 2800000, guid: b10f56dcbb737d343876a70102805841, type: 3}
+  - {fileID: 2800000, guid: af2590ed99145e141821ed941b7f66ff, type: 3}
+  - {fileID: 2800000, guid: 44d4209decb63d741920375fe444aacd, type: 3}
+  - {fileID: 2800000, guid: 75133f3d6df025b4684a0b49219d541d, type: 3}
+  - {fileID: 2800000, guid: 57d55ebc18ee61241a2138c18517bb46, type: 3}
+  - {fileID: 2800000, guid: f5b66b0910ce4d2409940796dc28a7d7, type: 3}
+  - {fileID: 2800000, guid: 7ec479d1e789edd4697e9d632efe69a1, type: 3}
+  - {fileID: 2800000, guid: 34f6574fe47dbbe409dbc385e40631f5, type: 3}
+  - {fileID: 2800000, guid: 450bcda214188ec40b9a15e22092fa11, type: 3}
+  - {fileID: 2800000, guid: c2afb5a5ec2bc0444ae69f67e0006b54, type: 3}
+  - {fileID: 2800000, guid: 0d7d28d26974808459d0645a316fb653, type: 3}
+  - {fileID: 2800000, guid: ccd7243abc0157549812eba80ac5c2b3, type: 3}
+  - {fileID: 2800000, guid: 47c4ef7a6e066834cb4d57068b26885d, type: 3}
+  - {fileID: 2800000, guid: 5f01e5b4a2d55834fb229bedfc5822d1, type: 3}
+  - {fileID: 2800000, guid: 6d520d3871878654c94cc5c138ef5390, type: 3}
+  - {fileID: 2800000, guid: 300f287bb69b2604583179a49d35115c, type: 3}
+  - {fileID: 2800000, guid: 71c71e3aef740c343a9d317a96c94a26, type: 3}
+  - {fileID: 2800000, guid: b9c3aac153324334eac592fc190dcde1, type: 3}
+  - {fileID: 2800000, guid: 9c638b7a9ea715647801aca1ee6e2593, type: 3}
+  - {fileID: 2800000, guid: e88b9c075e615294fa3818b9d4ef937b, type: 3}
+  - {fileID: 2800000, guid: c3652e8cd61ed044fa112f03986e02c3, type: 3}
+  - {fileID: 2800000, guid: bcb38f06f85d157418f20045235ca843, type: 3}
+  generateText: 1
+  textWeigth: 50
+  coinText:
+  - Testing Text! Place Holder!
+  generatePattern: 0
+  patternWeigth: 50
+  coinPatterns:
+  - {fileID: 2800000, guid: 76e1dd443e9884a4091cfd0ee8c1d804, type: 3}
