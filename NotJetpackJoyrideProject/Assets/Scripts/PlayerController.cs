@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
             playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Force);
             isJumping = true;
         }
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            isJumping = false;
+        }
         else if (Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping && currentJumpTime <= 0) //rocket upwards, not on the ground
         {
             playerRigidbody.AddForce(new Vector2(0, rocketForce * invertMod), ForceMode2D.Force);
