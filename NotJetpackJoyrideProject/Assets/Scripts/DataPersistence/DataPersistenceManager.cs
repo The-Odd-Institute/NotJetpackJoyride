@@ -69,6 +69,7 @@ public class DataPersistenceManager : MonoBehaviour
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
 
+    //Need to be remove after have death method
     private void OnApplicationQuit()
     {
         SaveGame();

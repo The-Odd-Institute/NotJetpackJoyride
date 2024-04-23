@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameData
 {
-    public float HighestScore;
+    public int HighestScore;
 
     public GameData()
     {
