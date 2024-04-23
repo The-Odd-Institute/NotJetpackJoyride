@@ -27,8 +27,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         InvertHandler(); //sets invertMod to 1 or -1 to invert forces
-        //InputHandler();
-        TouchInputHandler();
+        InputHandler();
+       //TouchInputHandler();
         JumpHandler();
 
         if(!Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping) // 'gravity' but not accelerating
