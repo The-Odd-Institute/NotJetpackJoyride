@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CoinKillBox : MonoBehaviour
+public class ObstacleKillBox : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
