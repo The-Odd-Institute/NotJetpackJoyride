@@ -6,22 +6,19 @@ using UnityEngine;
 public class Rocket : MonoBehaviour
 {
     [SerializeField] private GameObject warning;
+    [SerializeField] private GameObject warningTriangle;
     [SerializeField] private float rocketSpeed;
+    [SerializeField] private float warningTime;
 
     private GameObject player;
-    private float warningTime = 2.0f;
     private float warningTimeCount;
     private bool rocketEnabled;
-    private float rocketLifeTime = 2.0f;
-    private float rocketLifeTimeCount;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        transform.parent.transform.position = new Vector3(transform.parent.position.x,player.transform.position.y,0);  
         warningTimeCount = 0;
-        rocketLifeTimeCount = 0;
         warning.SetActive(true);
     }
 
@@ -34,28 +31,30 @@ public class Rocket : MonoBehaviour
 
     private void RocketHandler()
     {
-        if (rocketLifeTimeCount >= rocketLifeTime)
-        {
-            Destroy(this.gameObject);
-        }
         if (rocketEnabled)
         {
-            transform.Translate(-rocketSpeed, 0, 0);
-            rocketLifeTimeCount += Time.deltaTime;
+            transform.Translate(-rocketSpeed * Time.deltaTime, 0, 0);
             return;
         }
     }
 
     private void WarningHandler()
     {
-        if (warningTimeCount < warningTime)
+        if(warningTimeCount < warningTime/2 && !rocketEnabled)
         {
             warningTimeCount += Time.deltaTime;
+            transform.parent.transform.position = new Vector3(transform.parent.position.x, player.transform.position.y, 0);
+        }
+        else if (warningTimeCount < warningTime && !rocketEnabled)
+        {
+            warningTimeCount += Time.deltaTime;
+            warningTriangle.SetActive(true);
         }
         if (warningTimeCount >= warningTime)
         {
             warningTimeCount = 0;
             warning.SetActive(false);
+            warningTriangle.SetActive(false);
             rocketEnabled = true;
         }
     }
@@ -69,3 +68,4 @@ public class Rocket : MonoBehaviour
         }
     }
 }
+
