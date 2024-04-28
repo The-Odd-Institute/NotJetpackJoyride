@@ -25,12 +25,6 @@ public class LeaderboadHandler : MonoBehaviour
     [SerializeField] private GameObject LeaderboardDisplayPrefab;
     [SerializeField] private GameObject DisplayParentObject;
 
-    string VersionId { get; set; }
-    int Offset { get; set; }
-    int Limit { get; set; }
-    int RangeLimit { get; set; }
-    List<string> FriendIds { get; set; }
-
     async void Awake()
     {
         if(UnityServices.State == ServicesInitializationState.Uninitialized)
@@ -42,7 +36,7 @@ public class LeaderboadHandler : MonoBehaviour
             leaderboardInformation = new LeaderboardInformation();
         }
 
-        GetScores();
+        GetScoresBoard();
     }
 
     async Task SignInAnonymously()
@@ -60,16 +54,16 @@ public class LeaderboadHandler : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    public async void AddScore()
+    public async void AddScore(int score)
     {
-        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, 3203);
+        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, score);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
     }
 
-    public async void GetScores()
+    public async void GetScoresBoard()
     {
         var scoresResponse =
-            await LeaderboardsService.Instance.GetScoresAsync(LeaderboardId);
+            await LeaderboardsService.Instance.GetScoresAsync(LeaderboardId, new GetScoresOptions { Limit = 12});
         var playerJsonDatas = JsonConvert.SerializeObject(scoresResponse);
 
         Debug.Log(playerJsonDatas);
@@ -88,6 +82,11 @@ public class LeaderboadHandler : MonoBehaviour
 
     public void DisplayeLeaderBoard()
     {
+        foreach(Transform child in DisplayParentObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach(var player in leaderboardInformation.results)
         {
             GameObject newGameObject = Instantiate(LeaderboardDisplayPrefab, DisplayParentObject.transform);
