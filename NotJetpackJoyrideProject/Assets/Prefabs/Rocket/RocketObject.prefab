@@ -5082,8 +5082,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warning: {fileID: 1669001779464064538}
   warningTriangle: {fileID: 4853817366656863945}
-  rocketSpeed: 20
+  rocketSpeed: 15
   warningTime: 3
+  followPlayer: 0
 --- !u!1 &4853817366656863945
 GameObject:
   m_ObjectHideFlags: 0
