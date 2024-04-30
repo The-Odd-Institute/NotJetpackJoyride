@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8949024164870461711, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: rocketForce
-      value: 1.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8949024164870461711, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: downwardForce
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8949024164870461711, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: maxVerticalSpeed
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
