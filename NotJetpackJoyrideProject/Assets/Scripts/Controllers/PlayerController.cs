@@ -5,9 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpTime;
     [SerializeField] private float rocketForce;
-    [SerializeField] private Collider2D groundCheck;
+    [SerializeField] private float maxVerticalSpeed;
     [SerializeField] private float downwardForce;
     [SerializeField] bool invert = false;
 
@@ -16,71 +15,99 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = false;
     private bool isJumping = false;
     private int invertMod = 1;
-    private float currentJumpTime = 0;
+    private Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        InvertHandler(); //sets invertMod to 1 or -1 to invert forces
+        animator.SetBool("IsGrounded", isOnGround);
+        InvertHandler();
         InputHandler();
-       //TouchInputHandler();
-        JumpHandler();
+        TouchInputHandler();
+        LimitVerticalSpeed();
 
-        if(!Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping) // 'gravity' but not accelerating
+        if (!Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping)
         {
-            playerRigidbody.AddForce(new Vector2(0, -invertMod * downwardForce * Time.deltaTime), ForceMode2D.Impulse);
+            ApplyGravity();
         }
     }
-
+    private void ApplyGravity()
+    {
+        playerRigidbody.AddForce(new Vector2(0, -invertMod * downwardForce * Time.deltaTime), ForceMode2D.Impulse);
+    }
+    private void LimitVerticalSpeed()
+    {
+        float currentVerticalSpeed = playerRigidbody.velocity.y;
+        if (currentVerticalSpeed > maxVerticalSpeed)
+        {
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, maxVerticalSpeed);
+        }
+        else if (currentVerticalSpeed < -maxVerticalSpeed)
+        {
+            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -maxVerticalSpeed);
+        }
+    }
     private void InputHandler()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !invert) //player jump, gets higher more quickly
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !invert)
         {
-            playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Force);
-            isJumping = true;
+            StartJump();
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKey(KeyCode.Space))
         {
-            isJumping = false;
+            ActivateJetpack();
         }
-        else if (Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping && currentJumpTime <= 0) //rocket upwards, not on the ground
+
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            playerRigidbody.AddForce(new Vector2(0, rocketForce * invertMod), ForceMode2D.Force);
+            isJumping = false; 
         }
+
     }
     private void TouchInputHandler()
     {
         if (Input.touchCount > 0)
         {
-            Debug.Log("touch sensed");
-
             Touch touch = Input.GetTouch(0);
+
             if (touch.phase == TouchPhase.Began && isOnGround && !invert)
             {
-                playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Force);
-                isJumping = true;
+                StartJump();
             }
-            else if (touch.phase == TouchPhase.Stationary|| touch.phase == TouchPhase.Moved)
+            else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) && !isOnGround)
             {
-                if (!isOnGround && currentJumpTime < jumpTime)
-                {
-                    playerRigidbody.AddForce(new Vector2(0, rocketForce * invertMod), ForceMode2D.Force);
-                }
+                ActivateJetpack();
             }
             else if (touch.phase == TouchPhase.Ended)
             {
                 isJumping = false;
-                currentJumpTime = 0;
             }
         }
     }
 
 
+    private void StartJump()
+    {
+        playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
+        isJumping = true; 
+        isOnGround = false; 
+    }
+
+    private void ActivateJetpack()
+    {
+        float boostFactor = 1.0f;
+        if (playerRigidbody.velocity.y < 0) // Adds small boost if falling
+        {
+            boostFactor += Mathf.Abs(playerRigidbody.velocity.y) / maxVerticalSpeed;
+        }
+        playerRigidbody.AddForce(new Vector2(0, rocketForce * invertMod * boostFactor), ForceMode2D.Force);
+    }
     private void InvertHandler()
     {
         if (!invert)
@@ -92,34 +119,19 @@ public class PlayerController : MonoBehaviour
 
         invertMod = -1; // invert mod is just to flip the gravity and forces when inverting.
         playerTransform.transform.rotation = Quaternion.Euler(0, 180, 180);
-        
-    }
-
-    private void JumpHandler()
-    {
-        if (isJumping)
-        {
-            currentJumpTime += Time.deltaTime;
-            if (currentJumpTime > jumpTime)
-            {
-                currentJumpTime = 0;
-                isJumping = false;
-            }
-        }
 
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 6) // 6 is ground layer
+        if (collision.gameObject.layer == 6)
         {
             isOnGround = true;
+            isJumping = false; // We reset isJumping here when we detect ground contact
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6) // 6 is ground layer
+        if (collision.gameObject.layer == 6)
         {
             isOnGround = false;
         }
