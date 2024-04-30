@@ -5,22 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public int highscore;
-    public int lastscore;
-    void Start()
+    [SerializeField] float killTime;
+    public void KillPlayer()
     {
-       
-
+        StartCoroutine(Delay());
     }
+    IEnumerator Delay()
+    {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void LoadMainScene()
-    {
-        SceneManager.LoadScene(2);
+        yield return new WaitForSeconds(killTime);
     }
 }
