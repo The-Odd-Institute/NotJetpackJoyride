@@ -21,9 +21,12 @@ public class LeaderboadHandler : MonoBehaviour
     const string LeaderboardId = "JetpackLeaderboard";
 
     private LeaderboardInformation leaderboardInformation;
+    private PlayerData playerData;
 
     [SerializeField] private GameObject LeaderboardDisplayPrefab;
     [SerializeField] private GameObject DisplayParentObject;
+
+    [SerializeField] private bool displayBoard = false;
 
     async void Awake()
     {
@@ -33,10 +36,14 @@ public class LeaderboadHandler : MonoBehaviour
         if (!AuthenticationService.Instance.IsAuthorized)
         {
             await SignInAnonymously();
+            GetPlayerScore();
             leaderboardInformation = new LeaderboardInformation();
         }
 
-        GetScoresBoard();
+        if(displayBoard)
+        {
+            GetScoresBoard();
+        }
     }
 
     async Task SignInAnonymously()
@@ -64,23 +71,28 @@ public class LeaderboadHandler : MonoBehaviour
     {
         var scoresResponse =
             await LeaderboardsService.Instance.GetScoresAsync(LeaderboardId, new GetScoresOptions { Limit = 12});
-        var playerJsonDatas = JsonConvert.SerializeObject(scoresResponse);
+        var playersJsonDatas = JsonConvert.SerializeObject(scoresResponse);
 
-        Debug.Log(playerJsonDatas);
+        Debug.Log(playersJsonDatas);
 
-        leaderboardInformation = JsonConvert.DeserializeObject<LeaderboardInformation>(playerJsonDatas);
+        leaderboardInformation = JsonConvert.DeserializeObject<LeaderboardInformation>(playersJsonDatas);
 
-        DisplayeLeaderBoard();
+        DisplayLeaderBoard();
     }
 
     public async void GetPlayerScore()
     {
         var scoreResponse =
             await LeaderboardsService.Instance.GetPlayerScoreAsync(LeaderboardId);
+
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
+
+        var playerJsonData = JsonConvert.SerializeObject(scoreResponse);
+
+        playerData = JsonConvert.DeserializeObject<PlayerData>(playerJsonData);
     }
 
-    public void DisplayeLeaderBoard()
+    public void DisplayLeaderBoard()
     {
         foreach(Transform child in DisplayParentObject.transform)
         {
@@ -95,5 +107,10 @@ public class LeaderboadHandler : MonoBehaviour
             texts[1].text = player.playerName.ToString();
             texts[2].text = player.score.ToString();
         }
+    }
+
+    public PlayerData GetPlayer()
+    {
+        return playerData;
     }
 }

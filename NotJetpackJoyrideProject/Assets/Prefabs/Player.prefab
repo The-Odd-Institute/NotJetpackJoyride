@@ -105,9 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 75
-  jumpTime: 0.3
   rocketForce: 1.5
-  groundCheck: {fileID: 7608257182222079544}
+  maxVerticalSpeed: 0
   downwardForce: 2
   invert: 0
 --- !u!61 &1737121603871708035
