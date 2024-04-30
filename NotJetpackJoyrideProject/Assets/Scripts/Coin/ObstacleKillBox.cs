@@ -8,7 +8,7 @@ public class ObstacleKillBox : MonoBehaviour
         {
             coin.BackToCoinPool();
         }
-        if(collision.gameObject.CompareTag("Obstacle"))
+        else if(collision.gameObject.CompareTag("Obstacle"))
         {
             Destroy(collision.transform.parent.gameObject);
         }

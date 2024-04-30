@@ -198,7 +198,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5513757180042353558, guid: f2c4b04fb0f834f4ebc85683eceaeeaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.8
+      value: -13.65
       objectReference: {fileID: 0}
     - target: {fileID: 5513757180042353558, guid: f2c4b04fb0f834f4ebc85683eceaeeaa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -422,11 +422,15 @@ MonoBehaviour:
   generateText: 1
   textWeigth: 50
   coinText:
-  - Ivan
+  - Coins!
+  - Test
   generatePattern: 1
-  patternWeigth: 1
+  patternWeigth: 50
   coinPatterns:
   - {fileID: 2800000, guid: 76e1dd443e9884a4091cfd0ee8c1d804, type: 3}
+  - {fileID: 2800000, guid: 7e637ccd4620dc546923d92deefae318, type: 3}
+  - {fileID: 2800000, guid: a9e4f5d54dfcc9c4cbf7556982cedf3a, type: 3}
+  - {fileID: 2800000, guid: 043abac6e4de4ac4f954b0ed46fac70d, type: 3}
 --- !u!4 &1949217896
 Transform:
   m_ObjectHideFlags: 0
