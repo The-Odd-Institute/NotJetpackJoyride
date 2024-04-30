@@ -34,9 +34,9 @@ public class CoinGenerator : MonoBehaviour
         }
 
         // Compute weight
-        textRatioWeigth = textWeigth / (textWeigth + patternWeigth);
+        //textRatioWeigth = textWeigth / (textWeigth + patternWeigth);
 
-        GenerateRandom();
+        //GenerateRandom();
     }
 
     private Transform PlaceCoin(Texture2D pattern, Vector2 position)
@@ -105,8 +105,10 @@ public class CoinGenerator : MonoBehaviour
     }
 
     //======================================================================
-    public Transform GenerateRandom()
+    public Transform GenerateRandom(Vector2 position)
     {
+        textRatioWeigth = textWeigth / (textWeigth + patternWeigth);
+
         // ZOMBIES
         if (generatePattern == false && generateText)
             GenerateText();
@@ -115,9 +117,17 @@ public class CoinGenerator : MonoBehaviour
 
         float f = Random.value;
         if (f <= textRatioWeigth)
-            return GenerateText();
+        {
+            Transform coinGroup = GenerateText();
+            coinGroup.transform.position = position;
+            return coinGroup;
+        }
         else
-            return GeneratePattern();
+        {
+            Transform coinGroup = GeneratePattern();
+            coinGroup.transform.position = position;
+            return coinGroup;
+        }
     }
 
     public Transform GenerateText()
