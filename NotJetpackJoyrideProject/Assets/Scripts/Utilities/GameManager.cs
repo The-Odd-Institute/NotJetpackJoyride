@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public void KillPlayer()
     {
         StartCoroutine(Delay());
+        SceneManager.LoadScene(3);
     }
     IEnumerator Delay()
     {
