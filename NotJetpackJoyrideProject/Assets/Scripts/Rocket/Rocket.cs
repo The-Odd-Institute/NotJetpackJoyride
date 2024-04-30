@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,39 +12,60 @@ public class Rocket : MonoBehaviour
     private GameObject player;
     private float warningTimeCount;
     private bool rocketEnabled;
+    
+    public bool targetPlayer = false;
+    public bool followPlayer = false;
 
     // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
-        player = GameObject.Find("Player");
+        if(player == null)
+        {
+            player = GameObject.Find("Player");
+        }
         warningTimeCount = 0;
         warning.SetActive(true);
+        targetPlayer = false;
+        followPlayer = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        WarningHandler();
-        RocketHandler();
+        if (rocketEnabled) 
+        { 
+            RocketHandler(); 
+        }
+        else 
+        { 
+            WarningHandler();
+            if (followPlayer)
+            {
+                SnapToPlayerPosition();
+            }
+            else if (targetPlayer) 
+            { 
+                SnapToPlayerPosition();
+                targetPlayer = false;
+            }
+        }
     }
 
     private void RocketHandler()
     {
-        if (rocketEnabled)
-        {
-            transform.Translate(-rocketSpeed * Time.deltaTime, 0, 0);
-            return;
-        }
+        transform.Translate(-rocketSpeed * Time.deltaTime, 0, 0);
+        return;
     }
 
     private void WarningHandler()
     {
-        if(warningTimeCount < warningTime/2 && !rocketEnabled)
+        if(warningTimeCount < warningTime/2)
         {
             warningTimeCount += Time.deltaTime;
-            transform.parent.transform.position = new Vector3(transform.parent.position.x, player.transform.position.y, 0);
+            
         }
-        else if (warningTimeCount < warningTime && !rocketEnabled)
+        else if (warningTimeCount < warningTime)
         {
             warningTimeCount += Time.deltaTime;
             warningTriangle.SetActive(true);
@@ -57,6 +77,11 @@ public class Rocket : MonoBehaviour
             warningTriangle.SetActive(false);
             rocketEnabled = true;
         }
+    }
+
+    private void SnapToPlayerPosition()
+    {
+        transform.parent.transform.position = new Vector3(transform.parent.position.x, player.transform.position.y, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

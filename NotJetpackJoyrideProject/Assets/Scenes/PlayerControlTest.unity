@@ -537,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 6251830162749583902, guid: 9485aeb2de2878a44817a6243b452622, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6628425627677484876, guid: 9485aeb2de2878a44817a6243b452622, type: 3}
       propertyPath: m_SortingOrder
       value: -1
@@ -705,7 +709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8177559254316313937, guid: 5e7940c13de70e246bbef82e259ac827, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 6.09
       objectReference: {fileID: 0}
     - target: {fileID: 8177559254316313937, guid: 5e7940c13de70e246bbef82e259ac827, type: 3}
       propertyPath: m_LocalPosition.z
