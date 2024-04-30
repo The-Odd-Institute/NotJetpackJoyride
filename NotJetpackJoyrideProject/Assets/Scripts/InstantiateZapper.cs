@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,26 @@ using UnityEngine;
 public class InstantiateZapper : MonoBehaviour
 {
     public GameObject zapper;
-    private GameObject End_zapper;
+    private GameObject endZapper;
+    private GameObject boxCollider;
 
+    //used for adjusting the length of zapper
     [SerializeField] private float minSize;
     [SerializeField] private float maxSize;
+
+    //used for adjusting the rotation of zapper
+    [SerializeField] private float minRot;
+    [SerializeField] private float maxRot;
+
+    float zapper_Length;
 
     int spawnOffset = -4;
 
     // Start is called before the first frame update
     void Start()
     {
-       End_zapper = zapper.transform.GetChild(1).gameObject;
+       endZapper = zapper.transform.GetChild(1).gameObject;
+       boxCollider = zapper.transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame
@@ -33,15 +43,19 @@ public class InstantiateZapper : MonoBehaviour
     {
 
         //random distance
-        
+
         //random rotation
 
+        zapper_Length = Random.Range(minSize, maxSize);
 
         //instantiate
-        Instantiate(zapper, new Vector3(0, offset, 0), Quaternion.identity);
+        Instantiate(zapper, new Vector2(0, offset), Quaternion.Euler(0, 0, Random.Range(minRot, maxRot)));
 
-        End_zapper.transform.position = new Vector3(Random.Range(minSize, maxSize), End_zapper.transform.position.y, End_zapper.transform.position.z);
+        //length of how far away the end of the zapper will be
+        endZapper.transform.position = new Vector2(zapper_Length, endZapper.transform.position.y);
 
+        //scales box collider depending on zapper length
+        boxCollider.transform.localScale = new Vector3(zapper_Length, boxCollider.transform.localScale.y, boxCollider.transform.localScale.z);
 
     }
 
