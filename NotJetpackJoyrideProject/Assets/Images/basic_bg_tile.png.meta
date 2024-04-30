@@ -1,0 +1,993 @@
+fileFormatVersion: 2
+guid: d0511f54f2b80964eb9a19482a33f01e
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 256
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: basic_bg_tile_360_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2317ab83c8e8e4bbd9cc6d2c21668b
+      internalID: 686211549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77e83f6e6afdd0041b34cf1159048c86
+      internalID: 762316685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c1f2c825a43cb4f9b898c9f353325d
+      internalID: 1738765696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31f6bc2f767ccea49be99f8ff993bc3c
+      internalID: 1509560906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 160
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a13a07e25d1cc244b64f483866a71cb
+      internalID: -1954922746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_5
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 128
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2d354963c7c024d8e2ca7eeeab29d8
+      internalID: 271971890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_6
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 96
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f97dd36ba5542c40897a68bd6a8d516
+      internalID: 1880494897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_7
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 64
+        width: 104
+        height: 32
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8c6e14f89ccead44935eed76377d565
+      internalID: -146861896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_13
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d0975ccb0b7f2f4daecc27483cbdbce
+      internalID: -1560931318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_14
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4d030cef9ab574dad1f5ddb223309b
+      internalID: 178352065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_15
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 176
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a888e422828a2ba4b84690a3bc893e59
+      internalID: -121168418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_29
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9316dbecc8fbd0f429225c79d9b6f03a
+      internalID: -994676218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_30
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8b4ef5257ea67f4d91f7d630e1019bc
+      internalID: -103752035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_31
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 160
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15f6fa3cc0eaff4439339bab1a90a4da
+      internalID: 607735895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_110
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027aa99ed4a0aaf40a65ab27e3e691bf
+      internalID: -1371856725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_111
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9c52c52a6e227044a41c7a8b468e28d
+      internalID: 574280071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_112
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32bea412af957df429eaf200706f8259
+      internalID: -2053907320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_113
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e303a7a5199a1214ba65bc92f581f6a6
+      internalID: -295687489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_114
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62553c38ed29f9e46bbf5f89dfd974ef
+      internalID: -1177646349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_115
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72aefa9b181b32643a7ef743019763bb
+      internalID: -1063657907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_116
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652091f2af5340045af608372e34a688
+      internalID: 1740389215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_117
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24ad97c8b84ff7d408130c88468f5a92
+      internalID: 1446864925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_118
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dccff4b8cce300c44864a5c1f08073e1
+      internalID: -815581906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_119
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fd259bc7e3b9ea4bacc6e8fb018a8ae
+      internalID: 2113489556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_120
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f16bd166e3981469f8b6292bcb2a9c
+      internalID: 1422049765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_121
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6209e8b1a7ac2504899da512ddb34653
+      internalID: 746835121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_122
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7d2486b59fd5944ac072c7728ce25f
+      internalID: -1563113041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_123
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e294428b61a0464a924a9622a9a36b1
+      internalID: -693171277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_124
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2260e77da482a41890a85770d902d4
+      internalID: -618468413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_125
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f889db464eb8a9c4f9964ffe6ccd0cd9
+      internalID: -1342485422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_126
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036e339691549d04588475fb61513333
+      internalID: -187546106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_127
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9f17c95426008648b661f26e62cb8aa
+      internalID: 61709152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_128
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab41dd10639e1da41ad2ed0f56e4f4f8
+      internalID: -342789324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_129
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393e0fa1c700a3e4aad56e1e37152773
+      internalID: 933403666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: basic_bg_tile_360_130
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51758d7219138cd4c88923f9d712d817
+      internalID: -1689380255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      basic_bg_tile_360_0: 686211549
+      basic_bg_tile_360_1: 762316685
+      basic_bg_tile_360_10: 636676782
+      basic_bg_tile_360_100: -978463095
+      basic_bg_tile_360_101: 1814563566
+      basic_bg_tile_360_102: -1088208238
+      basic_bg_tile_360_103: -820568444
+      basic_bg_tile_360_104: -1511533347
+      basic_bg_tile_360_105: -581207105
+      basic_bg_tile_360_106: -1685681153
+      basic_bg_tile_360_107: 1316705283
+      basic_bg_tile_360_108: 1988580220
+      basic_bg_tile_360_109: 722397416
+      basic_bg_tile_360_11: -932920634
+      basic_bg_tile_360_110: -1371856725
+      basic_bg_tile_360_111: 574280071
+      basic_bg_tile_360_112: -2053907320
+      basic_bg_tile_360_113: -295687489
+      basic_bg_tile_360_114: -1177646349
+      basic_bg_tile_360_115: -1063657907
+      basic_bg_tile_360_116: 1740389215
+      basic_bg_tile_360_117: 1446864925
+      basic_bg_tile_360_118: -815581906
+      basic_bg_tile_360_119: 2113489556
+      basic_bg_tile_360_12: -922422057
+      basic_bg_tile_360_120: 1422049765
+      basic_bg_tile_360_121: 746835121
+      basic_bg_tile_360_122: -1563113041
+      basic_bg_tile_360_123: -693171277
+      basic_bg_tile_360_124: -618468413
+      basic_bg_tile_360_125: -1342485422
+      basic_bg_tile_360_126: -187546106
+      basic_bg_tile_360_127: 61709152
+      basic_bg_tile_360_128: -342789324
+      basic_bg_tile_360_129: 933403666
+      basic_bg_tile_360_13: -1560931318
+      basic_bg_tile_360_130: -1689380255
+      basic_bg_tile_360_14: 178352065
+      basic_bg_tile_360_15: -121168418
+      basic_bg_tile_360_16: 1568397373
+      basic_bg_tile_360_17: 278996866
+      basic_bg_tile_360_18: 1336215497
+      basic_bg_tile_360_19: 1539234410
+      basic_bg_tile_360_2: 1738765696
+      basic_bg_tile_360_20: 719574237
+      basic_bg_tile_360_21: 10884562
+      basic_bg_tile_360_22: -313608085
+      basic_bg_tile_360_23: 1167593686
+      basic_bg_tile_360_24: 506456922
+      basic_bg_tile_360_25: 1850357457
+      basic_bg_tile_360_26: -233518537
+      basic_bg_tile_360_27: -184028674
+      basic_bg_tile_360_28: -1563900731
+      basic_bg_tile_360_29: -994676218
+      basic_bg_tile_360_3: 1509560906
+      basic_bg_tile_360_30: -103752035
+      basic_bg_tile_360_31: 607735895
+      basic_bg_tile_360_32: -183185299
+      basic_bg_tile_360_33: -1695751552
+      basic_bg_tile_360_34: -77497392
+      basic_bg_tile_360_35: -1062662510
+      basic_bg_tile_360_36: 1638440813
+      basic_bg_tile_360_37: 385537598
+      basic_bg_tile_360_38: -150539406
+      basic_bg_tile_360_39: -85055904
+      basic_bg_tile_360_4: -1954922746
+      basic_bg_tile_360_40: -478936926
+      basic_bg_tile_360_41: 1860462727
+      basic_bg_tile_360_42: 668503497
+      basic_bg_tile_360_43: 1499848386
+      basic_bg_tile_360_44: 311430924
+      basic_bg_tile_360_45: -206623961
+      basic_bg_tile_360_46: 1912361958
+      basic_bg_tile_360_47: 1770996031
+      basic_bg_tile_360_48: -1474868130
+      basic_bg_tile_360_49: 1728834667
+      basic_bg_tile_360_5: 271971890
+      basic_bg_tile_360_50: -1405173067
+      basic_bg_tile_360_51: -999983283
+      basic_bg_tile_360_52: 1427122155
+      basic_bg_tile_360_53: -1809592132
+      basic_bg_tile_360_54: -200631658
+      basic_bg_tile_360_55: -2002993754
+      basic_bg_tile_360_56: -2088723264
+      basic_bg_tile_360_57: -694844295
+      basic_bg_tile_360_58: -541965047
+      basic_bg_tile_360_59: -979340136
+      basic_bg_tile_360_6: 1880494897
+      basic_bg_tile_360_60: -1079883822
+      basic_bg_tile_360_61: 1955246074
+      basic_bg_tile_360_62: -1009545245
+      basic_bg_tile_360_63: -605556659
+      basic_bg_tile_360_64: 851816425
+      basic_bg_tile_360_65: 29833942
+      basic_bg_tile_360_66: -88289229
+      basic_bg_tile_360_67: -329723364
+      basic_bg_tile_360_68: 2139202049
+      basic_bg_tile_360_69: 323742936
+      basic_bg_tile_360_7: -146861896
+      basic_bg_tile_360_70: -75209212
+      basic_bg_tile_360_71: -1964260674
+      basic_bg_tile_360_72: -364029240
+      basic_bg_tile_360_73: 409297161
+      basic_bg_tile_360_74: -77295399
+      basic_bg_tile_360_75: -1111306541
+      basic_bg_tile_360_76: -2071164119
+      basic_bg_tile_360_77: -1461930997
+      basic_bg_tile_360_78: -356426776
+      basic_bg_tile_360_79: -1333754416
+      basic_bg_tile_360_8: 447487062
+      basic_bg_tile_360_80: 411229779
+      basic_bg_tile_360_81: 629625468
+      basic_bg_tile_360_82: -95339602
+      basic_bg_tile_360_83: -539122711
+      basic_bg_tile_360_84: -132700291
+      basic_bg_tile_360_85: -701294101
+      basic_bg_tile_360_86: 1801182354
+      basic_bg_tile_360_87: 1565416928
+      basic_bg_tile_360_88: 132942770
+      basic_bg_tile_360_89: 1564608146
+      basic_bg_tile_360_9: -940201991
+      basic_bg_tile_360_90: 1284498618
+      basic_bg_tile_360_91: 455186184
+      basic_bg_tile_360_92: -1634481996
+      basic_bg_tile_360_93: -929137614
+      basic_bg_tile_360_94: -676211640
+      basic_bg_tile_360_95: -517771586
+      basic_bg_tile_360_96: 1819444799
+      basic_bg_tile_360_97: -1179707355
+      basic_bg_tile_360_98: -657864422
+      basic_bg_tile_360_99: -1909829116
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
