@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private bool isOnGround = false;
     private bool isJumping = false;
+    private bool jetpackEnabled = false;
     private int invertMod = 1;
     private Animator animator;
 
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         animator.SetBool("IsGrounded", isOnGround);
+        animator.SetBool("jetpackEnabled", jetpackEnabled);
         InvertHandler();
         InputHandler();
         TouchInputHandler();
@@ -62,11 +64,13 @@ public class PlayerController : MonoBehaviour
         else if (Input.GetKey(KeyCode.Space))
         {
             ActivateJetpack();
+            jetpackEnabled = true;
         }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
-            isJumping = false; 
+            isJumping = false;
+            jetpackEnabled = false;
         }
 
     }
@@ -83,14 +87,15 @@ public class PlayerController : MonoBehaviour
             else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) && !isOnGround)
             {
                 ActivateJetpack();
+                jetpackEnabled = true;
             }
             else if (touch.phase == TouchPhase.Ended)
             {
                 isJumping = false;
+                jetpackEnabled = false;
             }
         }
     }
-
 
     private void StartJump()
     {
