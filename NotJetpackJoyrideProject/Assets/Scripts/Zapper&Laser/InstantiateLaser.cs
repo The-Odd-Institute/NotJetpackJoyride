@@ -5,17 +5,17 @@ using UnityEngine;
 public class InstantiateLaser : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject laser;
+    [SerializeField] private GameObject laser;
     [SerializeField] private GameObject rightLaser;
     [SerializeField] private GameObject leftLaser;
-    private GameObject boxCollider;
+    [SerializeField] private GameObject boxCollider;
 
     [SerializeField] private LineRenderer _lineRenderer;
 
-    float laserWindup;
-    float laserEase;
+    [SerializeField] private float laserWindup;
+    [SerializeField] private float laserEase;
 
-
+    [SerializeField] private float windupWidth;
 
 
     void Start()
@@ -38,12 +38,13 @@ public class InstantiateLaser : MonoBehaviour
         //proly need to lerp smth
         //leftLaser.transform.position
 
- 
+
 
         //laser windup
-
+        _lineRenderer.startWidth = windupWidth;
 
         //activate laser
+        LaserActivation()
 
         boxCollider.SetActive(true);
         //delay a couple seconds
