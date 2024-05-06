@@ -48,7 +48,8 @@ public class InstantiateZapper : MonoBehaviour
         zapper_Length = Random.Range(minSize, maxSize);
 
         //instantiate
-        Instantiate(zapper, new Vector2(0, offset), Quaternion.Euler(0, 0, Random.Range(minRot, maxRot)));
+        GameObject newZapper = Instantiate(zapper, new Vector2(8, offset), Quaternion.Euler(0, 0, Random.Range(minRot, maxRot)));
+        newZapper.GetComponent<MoveLeft>().IsMoving = true;
 
         //length of how far away the end of the zapper will be
         endZapper.transform.position = new Vector2(zapper_Length, endZapper.transform.position.y);
