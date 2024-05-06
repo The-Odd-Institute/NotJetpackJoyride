@@ -5,6 +5,8 @@ using System.Linq;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    public static DataPersistenceManager instance { get; private set; }
+
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
@@ -13,7 +15,6 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
-    public static DataPersistenceManager instance { get; private set; }
 
     private void Awake()
     {

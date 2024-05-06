@@ -8,6 +8,6 @@ public class MainMenuScoreDisplay : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData gameData)
     {
-        highestScoreText.text = "Furthest Distance: " + gameData.HighestScore.ToString() + "M";
+        highestScoreText.text = "Furthest Distance: " + gameData.highestScore.ToString() + "M";
     }
 }
