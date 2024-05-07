@@ -61,6 +61,8 @@ public class PrefabCoin : MonoBehaviour
     private void CollectCoin()
     {
         Instantiate(coinCollectParticle.gameObject, transform.position, Quaternion.identity);
+        ScoreManager scoreManager = FindObjectOfType<ScoreManager>();
+        scoreManager.AddCoin();
         BackToCoinPool();
     }
 }
