@@ -81,7 +81,7 @@ public class Rocket : MonoBehaviour
 
     private void SnapToPlayerPosition()
     {
-        transform.parent.transform.position = new Vector3(transform.parent.position.x, player.transform.position.y, 0);
+        transform.position = new Vector3(transform.parent.position.x, player.transform.position.y, 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
