@@ -27,6 +27,12 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         currentScore = Mathf.RoundToInt(fScore);
     }
 
+    //Convert all the coin to score when the game is over
+    private void ConvertCoinToScore()
+    {
+        currentScore += coinsCollected * coinsConvertMultiplier;
+    }
+
     public void SaveData(ref GameData gameData)
     {
         if(currentScore > highestScore) 
@@ -45,10 +51,10 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         coinsCollected++;
     }
 
-    //Convert all the coin to score when the game is over
-    public void ConvertCoinToScore()
+    public void OnGameOver()
     {
-        currentScore += coinsCollected * coinsConvertMultiplier;
+        ConvertCoinToScore();
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public int GetScore { get { return currentScore; } }
