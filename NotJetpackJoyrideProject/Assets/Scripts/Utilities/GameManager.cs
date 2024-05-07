@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    /*
     [SerializeField] float killTime;
     public void KillPlayer()
     {
@@ -15,4 +16,16 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(killTime);
     }
+    */
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene(2);
+
+        }
+
+    }
+
+
 }
