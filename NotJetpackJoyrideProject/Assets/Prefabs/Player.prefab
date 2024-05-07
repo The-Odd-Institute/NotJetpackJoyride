@@ -3685,7 +3685,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3737,8 +3737,8 @@ ParticleSystem:
         m_RotationOrder: 4
     m_EnergyLossOnCollision:
       serializedVersion: 2
-      minMaxState: 3
-      scalar: 0.3
+      minMaxState: 0
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4843,6 +4843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531d8d5321cd4124c94c632e1923ab99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shrapnel: {fileID: 68143650122443359, guid: f066bbdd56249614f828f4c0658987a5, type: 3}
 --- !u!1 &4614588675243749277
 GameObject:
   m_ObjectHideFlags: 0
