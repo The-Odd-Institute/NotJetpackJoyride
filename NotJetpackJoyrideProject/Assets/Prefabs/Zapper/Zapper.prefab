@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4154267985606162178}
+  - component: {fileID: 4305855335518835137}
   m_Layer: 8
   m_Name: Zapper
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34,6 +35,19 @@ Transform:
   - {fileID: 1517439952794043298}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4305855335518835137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191239911500125493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f9b7bb3c5649a547b6858ba176066ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &5050436533526174350
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,7 +62,7 @@ GameObject:
   - component: {fileID: 8751973507064745924}
   m_Layer: 8
   m_Name: Start_Zapper
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,7 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938eba56db62cd942a455d273478766a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defDistanceRay: 100
   laserFirePoint: {fileID: 2394128990790969257}
   laserEndPoint: {fileID: 4012702256304043475}
   _lineRenderer: {fileID: 2081959147917213092}
@@ -254,7 +267,7 @@ GameObject:
   - component: {fileID: 6972156516252048681}
   m_Layer: 8
   m_Name: End_Zapper
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,7 +281,7 @@ Transform:
   m_GameObject: {fileID: 5215011394007783128}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: 4.350841, y: 0, z: 0.020626806}
+  m_LocalPosition: {x: 2.4925737, y: 0, z: 0.020626806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -431,7 +444,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.01, y: 0, z: 0.020626806}
-  m_LocalScale: {x: 4.350841, y: 0.3, z: 1}
+  m_LocalScale: {x: 2.4925737, y: 0.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4154267985606162178}
