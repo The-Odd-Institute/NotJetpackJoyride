@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.Services.Authentication;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    public static DataPersistenceManager instance { get; private set; }
+
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
@@ -13,7 +16,6 @@ public class DataPersistenceManager : MonoBehaviour
     private List<IDataPersistence> dataPersistenceObjects;
 
     private FileDataHandler dataHandler;
-    public static DataPersistenceManager instance { get; private set; }
 
     private void Awake()
     {
@@ -29,6 +31,13 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
+        
+        LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
+        if( leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn) 
+        {
+            Debug.Log("Found");
+            leaderboadHandler.AddScore(gameData.highestScore);
+        }
     }
 
     public void NewGame()
@@ -61,6 +70,8 @@ public class DataPersistenceManager : MonoBehaviour
 
         dataHandler.Save(gameData);
     }
+
+    public GameData GetGameData() { return gameData; }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {

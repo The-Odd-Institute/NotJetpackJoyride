@@ -141,4 +141,16 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
     }
+
+    public bool GetJetpackStatus()
+    {
+        if(jetpackEnabled)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }
