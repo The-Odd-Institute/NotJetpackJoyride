@@ -6,10 +6,10 @@ using UnityEngine;
 
 public class GameData
 {
-    public int HighestScore;
+    public int highestScore;
 
     public GameData()
     {
-        HighestScore = 0;
+        highestScore = 0;
     }
 }
