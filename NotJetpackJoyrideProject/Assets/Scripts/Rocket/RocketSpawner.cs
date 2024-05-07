@@ -32,19 +32,19 @@ public class RocketSpawner : MonoBehaviour
     public void SpawnStaticRocket()
     {
         GameObject newRocket = Instantiate(rocket, this.transform);
-        newRocket.transform.parent.transform.position = new Vector3(transform.parent.position.x, Random.Range(-4, 5), 0);
+        newRocket.transform.position = new Vector3(transform.parent.position.x, Random.Range(-4, 5), 0);
     }
 
     public void SpawnTargetedRocket()
     {
         GameObject newRocket = Instantiate(rocket,this.transform);
-        newRocket.GetComponentInChildren<Rocket>().targetPlayer = true;
+        newRocket.GetComponent<Rocket>().targetPlayer = true;
     }
     public void SpawnSeekingRocket()
     {
         GameObject newRocket = Instantiate(rocket, this.transform);
-        newRocket.GetComponentInChildren<Rocket>().targetPlayer = true;
-        newRocket.GetComponentInChildren<Rocket>().followPlayer = true;
+        newRocket.GetComponent<Rocket>().targetPlayer = true;
+        newRocket.GetComponent<Rocket>().followPlayer = true;
     }
 
     public void SpawnTargetedRockets(int numRockets, float offsetTime)
