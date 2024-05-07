@@ -8,6 +8,8 @@ public class EntitySpawnManager : MonoBehaviour
     [SerializeField] private ZapperManager zapperManager;
     [SerializeField] private RocketManager rocketManager;
     [SerializeField] private float zapperCoinSpawnDelay;
+    [SerializeField] private float delayAfterCoinSpawn;
+    [SerializeField] private float delayAfterZapperSpawn;
     [SerializeField] private float rocketSpawnDelay;
 
     private float currentZapperCoinTimer = 0.0f;
@@ -21,15 +23,15 @@ public class EntitySpawnManager : MonoBehaviour
         if (currentZapperCoinTimer > zapperCoinSpawnDelay)
         {
             int zapperOrCoin = Random.Range(0, 5);
-            if (zapperOrCoin == 0)
+            if (zapperOrCoin != 5)
             {
                 coinManager.SpawnCoins();
-                zapperCoinSpawnDelay = 7.0f;
+                zapperCoinSpawnDelay = delayAfterCoinSpawn;
             }
             else
             {
                 zapperManager.SpawnZapper();
-                zapperCoinSpawnDelay = 3.0f;
+                zapperCoinSpawnDelay = delayAfterZapperSpawn;
             }
             currentZapperCoinTimer = 0.0f;
         }

@@ -18,7 +18,7 @@ public class CoinGenerator : MonoBehaviour
     [SerializeField] private float patternWeigth = default;
     [SerializeField] private Texture2D[] coinPatterns = default;
 
-    private const float OFFSET_UNIT = 1.0f;
+    private const float OFFSET_UNIT = 0.825f;
     Vector2 spawnPosition = Vector2.zero;
     private float textRatioWeigth = default;
     private int poolSize = 200;
