@@ -35,6 +35,7 @@ public class DataPersistenceManager : MonoBehaviour
         LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
         if( leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn) 
         {
+            Debug.Log("Found");
             leaderboadHandler.AddScore(gameData.highestScore);
         }
     }
