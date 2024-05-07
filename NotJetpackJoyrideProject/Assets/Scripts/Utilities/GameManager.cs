@@ -3,29 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public  class GameManager : MonoBehaviour
 {
-    /*
-    [SerializeField] float killTime;
-    public void KillPlayer()
+    
+  
+    public void LoadDeathScreen()
     {
-        StartCoroutine(Delay());
+        SceneManager.LoadScene(2);
     }
-    IEnumerator Delay()
-    {
 
-        yield return new WaitForSeconds(killTime);
-    }
-    */
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.M))
-        {
-            SceneManager.LoadScene(2);
-
-        }
-
-    }
 
 
 }
