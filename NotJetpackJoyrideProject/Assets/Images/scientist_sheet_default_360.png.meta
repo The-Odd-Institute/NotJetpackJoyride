@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff3dd95f12a6231409c4038ae0611991
+guid: a84c0a04c68b91445bc0e09710966c3d
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,14 +43,14 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -69,10 +69,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -108,385 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_0
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 96
-        width: 13
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 395c49cdae7a3d141ae1b50deffddbfe
-      internalID: 1977806470
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_1
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 96
-        width: 13
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd7264b5ef55bef4b9fdc720cebeae19
-      internalID: -741051246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_2
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 96
-        width: 13
-        height: 17
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b78d36a1ec0f0ed47a4a657ca50faa1f
-      internalID: 560841608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_3
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 96
-        width: 13
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b95c23432bdb00344a0d7464bd569272
-      internalID: 810107154
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_4
-      rect:
-        serializedVersion: 2
-        x: 10
-        y: 65
-        width: 13
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ef41bba615448345ac8d5a73492a000
-      internalID: 1120402268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_5
-      rect:
-        serializedVersion: 2
-        x: 42
-        y: 64
-        width: 13
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 35efb368c0a4e7542b0a718befc7f3c3
-      internalID: -2011386729
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_6
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 65
-        width: 15
-        height: 19
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a854570c04ed2c949b53187b8fdf5c2f
-      internalID: 955845631
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_7
-      rect:
-        serializedVersion: 2
-        x: 106
-        y: 64
-        width: 13
-        height: 18
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9a55e0eb114c0846b9d5168dd9d6c92
-      internalID: 1445651578
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_8
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 34
-        width: 23
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37eb599aafb62884288daec7f3f0f3b2
-      internalID: -1548650768
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_9
-      rect:
-        serializedVersion: 2
-        x: 21
-        y: 54
-        width: 4
-        height: 4
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d977b8db9337ed540882f405bd268800
-      internalID: 902831899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_10
-      rect:
-        serializedVersion: 2
-        x: 36
-        y: 32
-        width: 22
-        height: 10
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a5348133d6f14046813ed902fcde593
-      internalID: -1118407825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_11
-      rect:
-        serializedVersion: 2
-        x: 7
-        y: 1
-        width: 22
-        height: 22
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1febf68efb181f646a86a5373fd538aa
-      internalID: 10183039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_12
-      rect:
-        serializedVersion: 2
-        x: 38
-        y: 10
-        width: 4
-        height: 4
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 151ae133977c55c49821f57227177dbc
-      internalID: 324121995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_13
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 0
-        width: 16
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ace7cdd162525424582999c48cf58e33
-      internalID: -1448203243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_14
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 9
-        width: 4
-        height: 4
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 688c4a1e3aa8991489adbc47797e58e0
-      internalID: -531185846
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_15
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 1
-        width: 18
-        height: 23
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a2d557a15943e594ba9426cd7ac6fdff
-      internalID: 1681088583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_16
-      rect:
-        serializedVersion: 2
-        x: 102
-        y: 10
-        width: 4
-        height: 4
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e8333a723f1a7a4786c2636b13aed92
-      internalID: 63462734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: scientist_sheet_default_360_17
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 0
-        width: 16
-        height: 21
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41b0f9a1218958040b6689b2c5f79d91
-      internalID: 1023681674
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -497,25 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      scientist_sheet_default_360_0: 1977806470
-      scientist_sheet_default_360_1: -741051246
-      scientist_sheet_default_360_10: -1118407825
-      scientist_sheet_default_360_11: 10183039
-      scientist_sheet_default_360_12: 324121995
-      scientist_sheet_default_360_13: -1448203243
-      scientist_sheet_default_360_14: -531185846
-      scientist_sheet_default_360_15: 1681088583
-      scientist_sheet_default_360_16: 63462734
-      scientist_sheet_default_360_17: 1023681674
-      scientist_sheet_default_360_2: 560841608
-      scientist_sheet_default_360_3: 810107154
-      scientist_sheet_default_360_4: 1120402268
-      scientist_sheet_default_360_5: -2011386729
-      scientist_sheet_default_360_6: 955845631
-      scientist_sheet_default_360_7: 1445651578
-      scientist_sheet_default_360_8: -1548650768
-      scientist_sheet_default_360_9: 902831899
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

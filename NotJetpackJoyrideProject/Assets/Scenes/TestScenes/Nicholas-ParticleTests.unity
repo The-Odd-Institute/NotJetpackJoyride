@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 263019103}
   - component: {fileID: 263019102}
   - component: {fileID: 263019105}
+  - component: {fileID: 263019106}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -233,7 +234,21 @@ MonoBehaviour:
   maxSize: 5
   minRot: 0
   maxRot: 360
---- !u!1001 &1480811269
+--- !u!114 &263019106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263019101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 871e3316daf7b0048a7aa26858f9c106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserPrefab: {fileID: 3085772124590473006, guid: 13e4af366caac5c44ac60638b9d64934, type: 3}
+  laserPositionY: -3
+--- !u!1001 &1191029455
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -247,11 +262,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.7331798
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.6072899
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalPosition.z
@@ -283,6 +298,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6972156516252048681, guid: 196469f286ce90c48ad823d284a84238, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -439,4 +458,4 @@ SceneRoots:
   - {fileID: 263019104}
   - {fileID: 2441324998899888968}
   - {fileID: 4295165117249644962}
-  - {fileID: 1480811269}
+  - {fileID: 1191029455}

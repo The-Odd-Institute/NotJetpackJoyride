@@ -5,8 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour, IDataPersistence
 {
     private int coinsCollected = 0;
-    private int currentScore = 0;
-    private float fScore = 0.0f;
+    private float currentScore = 0;
     private int highestScore = 0;
 
     private bool isRunning = true;
@@ -23,8 +22,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     {
         if (!isRunning) return;
 
-        fScore += Time.deltaTime * scoreIncrementSpeed;
-        currentScore = Mathf.RoundToInt(fScore);
+        currentScore += Time.deltaTime * scoreIncrementSpeed;
     }
 
     //Convert all the coin to score when the game is over
@@ -37,7 +35,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     {
         if(currentScore > highestScore) 
         {
-            gameData.highestScore = currentScore;
+            gameData.highestScore = Mathf.RoundToInt(currentScore);
         }
     }
 
@@ -53,10 +51,11 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
 
     public void OnGameOver()
     {
+        isRunning = false;
         ConvertCoinToScore();
         DataPersistenceManager.instance.SaveGame();
     }
 
-    public int GetScore { get { return currentScore; } }
+    public int GetScore { get { return Mathf.RoundToInt(currentScore); } }
     public int GetCoin {  get { return coinsCollected; } }
 }

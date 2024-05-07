@@ -1,47 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InstantiateLaser : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject laser;
-    private GameObject rightLaser;
-    private GameObject leftLaser;
-    private GameObject boxCollider;
+    [SerializeField] private GameObject laserPrefab;
 
-    float laserWindup;
-    float laserEaseIn;
+    private GameObject newLaser = null;
 
-    void Start()
-    {
-        leftLaser = laser.transform.GetChild(1).gameObject;
-        rightLaser = laser.transform.GetChild(2).gameObject;
-    }
+    [SerializeField] private float laserPositionY;
+    //used to determine the height of the laser
+
+
+    private float elapsedTime;
 
     void Update()
     {
-        
-
-       
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            InstantiateLaserEvent(laserPositionY);
+        }
 
     }
-
-    void InstantiateLaserEvent()
+    public void InstantiateLaserEvent(float laserPositionY)
     {
-        //lasers ease into frame
-
-
-        //laser windup
-
-
-        //activate laser
-
-        boxCollider.SetActive(true);
-    }
-
-    void LaserActivation()
-    {
+        newLaser = Instantiate(laserPrefab, new Vector2(0, laserPositionY), Quaternion.identity);
+        //always spawn the laser at x = 0, only edit the y coord
 
     }
 }
