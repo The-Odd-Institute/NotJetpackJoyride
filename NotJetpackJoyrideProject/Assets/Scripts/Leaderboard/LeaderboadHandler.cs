@@ -104,8 +104,10 @@ public class LeaderboadHandler : MonoBehaviour
             GameObject newGameObject = Instantiate(LeaderboardDisplayPrefab, DisplayParentObject.transform);
             TextMeshProUGUI[] texts = newGameObject.GetComponentsInChildren<TextMeshProUGUI>();
             texts[0].text = (player.rank + 1).ToString();
-            texts[1].text = player.playerName.ToString();
-            texts[2].text = player.score.ToString();
+            var nameId = player.playerName.Split("#");
+            texts[1].text = nameId[0] + " (#" + nameId[1] + ")";
+            var score = player.score.Split(".");
+            texts[2].text = score[0];
         }
     }
 
