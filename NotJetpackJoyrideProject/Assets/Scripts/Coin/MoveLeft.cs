@@ -11,7 +11,7 @@ public class MoveLeft : MonoBehaviour
     private void Update()
     {
         if (isMoving)
-            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime, Space.World);
 
         if (transform.childCount == 0)
             Destroy(gameObject);
