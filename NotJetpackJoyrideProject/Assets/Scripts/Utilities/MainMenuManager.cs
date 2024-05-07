@@ -7,6 +7,11 @@ public class MainMenuManager : MonoBehaviour
 {
     public void LoadMainScene()
     {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LoadLeaderboardScene()
+    {
         SceneManager.LoadScene(2);
     }
 

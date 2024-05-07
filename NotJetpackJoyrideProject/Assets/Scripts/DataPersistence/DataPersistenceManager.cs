@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using Unity.Services.Authentication;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -30,6 +31,12 @@ public class DataPersistenceManager : MonoBehaviour
         this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName, useEncryption);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
+        
+        LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
+        if( leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn) 
+        {
+            leaderboadHandler.AddScore(gameData.highestScore);
+        }
     }
 
     public void NewGame()
@@ -62,6 +69,8 @@ public class DataPersistenceManager : MonoBehaviour
 
         dataHandler.Save(gameData);
     }
+
+    public GameData GetGameData() { return gameData; }
 
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {

@@ -6,7 +6,6 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Leaderboards;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LeaderboardInformation
 { 
@@ -33,14 +32,13 @@ public class LeaderboadHandler : MonoBehaviour
         if(UnityServices.State == ServicesInitializationState.Uninitialized)
             await UnityServices.InitializeAsync();
 
-        if (!AuthenticationService.Instance.IsAuthorized)
-        {
+        if(!AuthenticationService.Instance.IsSignedIn)
             await SignInAnonymously();
-            GetPlayerScore();
-            leaderboardInformation = new LeaderboardInformation();
-        }
 
-        if(displayBoard)
+        GetPlayerScore();
+        leaderboardInformation = new LeaderboardInformation();
+
+        if (displayBoard)
         {
             GetScoresBoard();
         }

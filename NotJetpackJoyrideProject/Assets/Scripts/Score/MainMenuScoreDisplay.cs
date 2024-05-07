@@ -1,13 +1,11 @@
 using UnityEngine;
 using TMPro;
 
-public class MainMenuScoreDisplay : MonoBehaviour, IDataPersistence
+public class MainMenuScoreDisplay : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI highestScoreText;
-    public void SaveData(ref GameData gameData) { return;}
-
-    public void LoadData(GameData gameData)
+    private void Start()
     {
-        highestScoreText.text = "Furthest Distance: " + gameData.highestScore.ToString() + "M";
+        highestScoreText.text = "Furthest Distance: " + DataPersistenceManager.instance.GetGameData().highestScore + "M";
     }
 }
