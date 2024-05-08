@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
-    private bool isOnGround = false;
+    public bool isOnGround = false;
     private bool isJumping = false;
     private bool jetpackEnabled = false;
     private int invertMod = 1;

@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3289438158798466358}
   - component: {fileID: 3423196044420233359}
   - component: {fileID: 9114319090695911304}
-  - component: {fileID: 8668262284731806169}
   - component: {fileID: 557313232718385126}
   m_Layer: 0
   m_Name: Scientist
@@ -122,41 +121,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
---- !u!58 &8668262284731806169
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165605545569188933}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.084145546, y: -0.15426636}
-  serializedVersion: 2
-  m_Radius: 3.74
 --- !u!50 &557313232718385126
 Rigidbody2D:
   serializedVersion: 4
