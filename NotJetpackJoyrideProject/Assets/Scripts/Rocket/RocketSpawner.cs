@@ -59,7 +59,7 @@ public class RocketSpawner : MonoBehaviour
     {
         GameObject newRocket1 = Instantiate(rocket, this.transform);
         GameObject newRocket2 = Instantiate(rocket, this.transform);
-        newRocket1.transform.position = new Vector3(transform.position.x,3,transform.position.z);
+        newRocket1.transform.position = new Vector3(transform.position.x,4,transform.position.z);
         newRocket2.transform.position = new Vector3(transform.position.x, -3, transform.position.z);
     }
 
@@ -68,8 +68,8 @@ public class RocketSpawner : MonoBehaviour
         GameObject newRocket1 = Instantiate(rocket, this.transform);
         GameObject newRocket2 = Instantiate(rocket, this.transform);
         GameObject newRocket3 = Instantiate(rocket, this.transform);
-        newRocket1.transform.position = new Vector3(transform.position.x, 3, transform.position.z);
-        newRocket2.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        newRocket1.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
+        newRocket2.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
         newRocket3.transform.position = new Vector3(transform.position.x, -3, transform.position.z);
     }
 }
