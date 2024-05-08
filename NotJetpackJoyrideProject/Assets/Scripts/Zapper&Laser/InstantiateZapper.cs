@@ -18,24 +18,11 @@ public class InstantiateZapper : MonoBehaviour
 
     float zapper_Length;
 
-    int spawnOffset = -4;
-
     // Start is called before the first frame update
     void Start()
     {
         endZapper = zapper.transform.GetChild(1).gameObject;
         boxCollider = zapper.transform.GetChild(2).gameObject;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InstantiateObject(spawnOffset);
-            //spawn offset is just for testing
-            spawnOffset += 1;
-        }
     }
 
     public void InstantiateObject(int offset)
