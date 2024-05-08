@@ -23,7 +23,7 @@ public class EntitySpawnManager : MonoBehaviour
         if (currentZapperCoinTimer > zapperCoinSpawnDelay)
         {
             int zapperOrCoin = Random.Range(0, 5);
-            if (zapperOrCoin != 5)
+            if (zapperOrCoin == 0)
             {
                 coinManager.SpawnCoins();
                 zapperCoinSpawnDelay = delayAfterCoinSpawn;
