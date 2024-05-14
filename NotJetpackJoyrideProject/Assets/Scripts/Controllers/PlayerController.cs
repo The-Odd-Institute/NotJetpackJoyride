@@ -15,14 +15,21 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = false;
     private bool isJumping = false;
     private bool jetpackEnabled = false;
+    private bool isDying = false;
     private int invertMod = 1;
     private Animator animator;
+    private GameManager gameManager;
 
+    private const float TimeToDeathScreen = 3.0f;
+    private float timer = default;
+    private bool playerIsDead = default;
+    private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
     void Start()
     {
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -30,13 +37,26 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsGrounded", isOnGround);
         animator.SetBool("jetpackEnabled", jetpackEnabled);
         InvertHandler();
-        InputHandler();
-        TouchInputHandler();
+        if(!playerIsDead)
+        {
+            InputHandler();
+            TouchInputHandler();
+        }
         LimitVerticalSpeed();
-
         if (!Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping)
         {
             ApplyGravity();
+        }
+
+        if (playerIsDead)
+        {
+            timer += Time.deltaTime;
+            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+            
+            if (timer >= TimeToDeathScreen)
+            {
+                gameManager.LoadDeathScreen();
+            }
         }
     }
     private void ApplyGravity()
@@ -97,6 +117,16 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void KillPlayer()
+    {
+        playerIsDead = true;
+        timer = 0.0f;
+        animator.SetLayerWeight(1, 1);
+        playerRigidbody.velocity = Vector2.zero;
+        playerRigidbody.gravityScale = 0.0f;
+
+    }
+
     private void StartJump()
     {
         playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
@@ -128,12 +158,22 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Inside the trigger");
         if (collision.gameObject.layer == 6)
         {
             isOnGround = true;
             isJumping = false; // We reset isJumping here when we detect ground contact
         }
+
+        Debug.Log(collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            Debug.Log("detected");
+            KillPlayer();
+        }
     }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 6)
@@ -141,6 +181,7 @@ public class PlayerController : MonoBehaviour
             isOnGround = false;
         }
     }
+
 
     public bool GetJetpackStatus()
     {

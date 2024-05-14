@@ -9,7 +9,7 @@ public class InstantiateLaser : MonoBehaviour
 
     private GameObject newLaser = null;
 
-    [SerializeField] private float laserPositionY;
+    //[SerializeField] private float laserPositionY;
     //used to determine the height of the laser
 
 
@@ -17,16 +17,14 @@ public class InstantiateLaser : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            InstantiateLaserEvent(laserPositionY);
-        }
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    InstantiateLaserEvent(laserPositionY);
+        //}
 
     }
     public void InstantiateLaserEvent(float laserPositionY)
     {
-        newLaser = Instantiate(laserPrefab, new Vector2(0, laserPositionY), Quaternion.identity);
-        //always spawn the laser at x = 0, only edit the y coord
-
+        newLaser = Instantiate(laserPrefab, new Vector2(gameObject.transform.position.x, laserPositionY), Quaternion.identity);
     }
 }
