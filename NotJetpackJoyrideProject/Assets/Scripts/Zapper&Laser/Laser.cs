@@ -86,8 +86,8 @@ public class Laser : MonoBehaviour
         elapsedTime = 0;
         leftLaserStartPositionX = leftLaser.transform.position.x;
         rightLaserStartPositionX = rightLaser.transform.position.x;
-        leftLaserEndPositionX = -11;
-        rightLaserEndPositionX = 11;
+        leftLaserEndPositionX -= laserMovementVariance;
+        rightLaserEndPositionX += laserMovementVariance;
         Destroy(gameObject, 2);
     }
 }
