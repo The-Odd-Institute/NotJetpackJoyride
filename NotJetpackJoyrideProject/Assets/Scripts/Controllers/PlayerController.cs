@@ -23,13 +23,13 @@ public class PlayerController : MonoBehaviour
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
     private bool playerIsDead = default;
-
+    private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
     void Start()
     {
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        gameManager = GameObject.Find("SceneManager").GetComponent<GameManager>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     void Update()
@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
         if (playerIsDead)
         {
             timer += Time.deltaTime;
+            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+            
             if (timer >= TimeToDeathScreen)
             {
                 gameManager.LoadDeathScreen();
