@@ -182,10 +182,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public bool GetJetpackStatus()
     {
         if(jetpackEnabled)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool GetPlayerDeathStatus()
+    {
+        if (playerIsDead)
         {
             return true;
         }
