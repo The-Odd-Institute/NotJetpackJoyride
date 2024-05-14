@@ -230,8 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zapper: {fileID: 191239911500125493, guid: 196469f286ce90c48ad823d284a84238, type: 3}
+  rotatingZapper: 1
   minSize: 2
-  maxSize: 5
+  maxSize: 8
   minRot: 0
   maxRot: 360
 --- !u!114 &263019106
@@ -274,19 +275,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.32611382
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.94533056
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -298,7 +299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4154267985606162178, guid: 196469f286ce90c48ad823d284a84238, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 141.934
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
