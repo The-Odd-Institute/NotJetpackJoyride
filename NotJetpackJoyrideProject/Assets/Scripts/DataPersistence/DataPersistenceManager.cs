@@ -35,7 +35,6 @@ public class DataPersistenceManager : MonoBehaviour
         LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
         if( leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn) 
         {
-            Debug.Log("Found");
             leaderboadHandler.AddScore(gameData.highestScore);
         }
     }
@@ -78,11 +77,5 @@ public class DataPersistenceManager : MonoBehaviour
         IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
-    }
-
-    //Need to be remove after have death method
-    private void OnApplicationQuit()
-    {
-        SaveGame();
     }
 }

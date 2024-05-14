@@ -18,24 +18,11 @@ public class InstantiateZapper : MonoBehaviour
 
     float zapper_Length;
 
-    int spawnOffset = -4;
-
     // Start is called before the first frame update
     void Start()
     {
         endZapper = zapper.transform.GetChild(1).gameObject;
         boxCollider = zapper.transform.GetChild(2).gameObject;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InstantiateObject(spawnOffset);
-            //spawn offset is just for testing
-            spawnOffset += 1;
-        }
     }
 
     public void InstantiateObject(int offset)
@@ -48,7 +35,7 @@ public class InstantiateZapper : MonoBehaviour
         zapper_Length = Random.Range(minSize, maxSize);
 
         //instantiate
-        GameObject newZapper = Instantiate(zapper, new Vector2(8, offset), Quaternion.Euler(0, 0, Random.Range(minRot, maxRot)));
+        GameObject newZapper = Instantiate(zapper, new Vector2(gameObject.transform.position.x, offset), Quaternion.Euler(0, 0, Random.Range(minRot, maxRot)));
         newZapper.GetComponent<MoveLeft>().IsMoving = true;
 
         //length of how far away the end of the zapper will be

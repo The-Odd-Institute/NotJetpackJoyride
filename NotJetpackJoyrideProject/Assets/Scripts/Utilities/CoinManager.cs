@@ -8,6 +8,6 @@ public class CoinManager : MonoBehaviour
 
     public void SpawnCoins()
     {
-        coinGenerator.GenerateRandom(transform.position);
+        coinGenerator.GenerateRandom(coinGenerator.transform.position);
     }
 }
