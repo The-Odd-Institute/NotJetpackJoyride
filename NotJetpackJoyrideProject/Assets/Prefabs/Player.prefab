@@ -4946,10 +4946,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b960e59cbc785248b0d537f10ee8f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 20
-  rocketForce: 1
-  maxVerticalSpeed: 8
-  downwardForce: 1
+  jumpForce: 10
+  rocketForce: 0.6
+  maxVerticalSpeed: 10
+  downwardForce: 0.8
   invert: 0
 --- !u!61 &928937372009994893
 BoxCollider2D:
