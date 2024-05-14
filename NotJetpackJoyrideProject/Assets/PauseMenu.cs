@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -26,21 +27,30 @@ public class PauseMenu : MonoBehaviour
     }
     private void InputHandler()
     {
-        if (pauseMenu.activeSelf == true)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                pauseMenu.SetActive(false);
-            }
+            TogglePauseMenu();
+        }
+    }
 
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                pauseMenu.SetActive(true);
-            }
-        }
+    public void TogglePauseMenu()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
+    }
+
+    public void RestartButton()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void MainMenuButton()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void ContinueButton()
+    {
+        pauseMenu.SetActive(!pauseMenu.activeSelf);
     }
 
     private void TouchInputHandler()

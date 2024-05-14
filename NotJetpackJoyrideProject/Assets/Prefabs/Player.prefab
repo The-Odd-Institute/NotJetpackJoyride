@@ -4946,8 +4946,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b960e59cbc785248b0d537f10ee8f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 20
-  rocketForce: 1
+  jumpForce: 10
+  rocketForce: 0.4
   maxVerticalSpeed: 8
   downwardForce: 1
   invert: 0

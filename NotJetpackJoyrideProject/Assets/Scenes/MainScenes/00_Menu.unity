@@ -721,7 +721,7 @@ GameObject:
   - component: {fileID: 1068337710}
   - component: {fileID: 1068337709}
   m_Layer: 5
-  m_Name: Button
+  m_Name: LeaderBoard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1166,7 +1166,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 967675668}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: LoadMainScene
+        m_MethodName: LoadGameplayScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
