@@ -8,12 +8,32 @@ public class BulletHits : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger enter detected");
+       /* Debug.Log("Trigger enter detected");
+        Debug.Log("Collided with: " + collision.gameObject.name);
+       */
+     /*   if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
+        {
+            npcParent.GetComponent<scientist>().HandleDeath();
+        }*/
+    }
+
+    private void OnParticleCollision(GameObject collision)
+    {
+       /* Debug.Log("Trigger enter detected");
         Debug.Log("Collided with: " + collision.gameObject.name);
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Bullet"))
         {
             npcParent.GetComponent<scientist>().HandleDeath();
         }
+       */
     }
+
+    private void OnParticleTrigger()
+    {
+        
+    }
+
+
+
 }

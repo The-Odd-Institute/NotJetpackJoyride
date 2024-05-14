@@ -38,6 +38,7 @@ public class scientist : MonoBehaviour
     {
         if (other.gameObject.layer == playerLayer)
         {
+            Debug.Log("player enter the detection range");
             CheckPlayerFlying(other);
         }
     }
@@ -51,6 +52,7 @@ public class scientist : MonoBehaviour
     }
     private void CheckPlayerFlying(Collider2D other)
     {
+
         if (!other.gameObject.GetComponent<PlayerController>().isOnGround)
         {
             if (!playerIsInDetectionRange)
@@ -68,7 +70,6 @@ public class scientist : MonoBehaviour
     }
     public void HandleDeath()
     {
-        speed = 0;
         animator.SetBool("HasBeenHited", true);
     }
 
