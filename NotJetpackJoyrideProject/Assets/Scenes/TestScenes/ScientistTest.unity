@@ -1090,6 +1090,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7971490425796372903, guid: f2c4b04fb0f834f4ebc85683eceaeeaa, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2363,7 +2367,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2383,7 +2387,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14283776, y: 2.0065906}
+  m_Offset: {x: -2.4074636, y: 2.0065906}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2394,7 +2398,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.816731, y: 6.427171}
+  m_Size: {x: 6.175152, y: 6.427171}
   m_EdgeRadius: 0
 --- !u!70 &1104424878
 CapsuleCollider2D:
@@ -7578,6 +7582,10 @@ PrefabInstance:
     - target: {fileID: 1165605545569188933, guid: e4d0ac2753b359a40a84ede975bb7b8b, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165605545569188933, guid: e4d0ac2753b359a40a84ede975bb7b8b, type: 3}
+      propertyPath: m_TagString
+      value: Npc
       objectReference: {fileID: 0}
     - target: {fileID: 3289438158798466358, guid: e4d0ac2753b359a40a84ede975bb7b8b, type: 3}
       propertyPath: m_Size.x

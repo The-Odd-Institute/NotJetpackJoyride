@@ -11,14 +11,12 @@ public class scientist : MonoBehaviour
 
     bool playerIsInDetectionRange = false;
     int playerLayer;
-
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 
         playerLayer = LayerMask.NameToLayer("Player");
-
     }
 
     void Update()
@@ -70,7 +68,9 @@ public class scientist : MonoBehaviour
     }
     public void HandleDeath()
     {
+        Debug.Log("npc is dead");
         animator.SetBool("HasBeenHited", true);
+
     }
 
     private void ChangeDirection()
@@ -85,8 +85,8 @@ public class scientist : MonoBehaviour
         FlipSprite();
     }
     private void FlipSprite()
-    {
-        transform.localScale = new Vector3(Mathf.Sign(-speed), 1, 1);
+    {    
+       transform.localScale = new Vector3(Mathf.Sign(-speed), 1, 1);   
     }
 }
 

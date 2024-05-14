@@ -12,5 +12,9 @@ public class ObstacleKillBox : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Npc"))
+        {
+            Destroy(collision.transform.parent.gameObject);
+        }
     }
 }

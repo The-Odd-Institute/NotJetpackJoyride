@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Hitbox
+  - Npc
   layers:
   - Default
   - TransparentFX
