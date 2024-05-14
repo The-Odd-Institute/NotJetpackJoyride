@@ -5,53 +5,87 @@ using UnityEngine;
 public class scientist : MonoBehaviour
 {
     [SerializeField] private float speed;
+
     private Animator animator;
+    private Rigidbody2D rb;
 
-    GameObject player;
     bool playerIsInDetectionRange = false;
-
+    int playerLayer;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        player = GameObject.FindWithTag("Player");
+        rb = GetComponent<Rigidbody2D>();
+
+        playerLayer = LayerMask.NameToLayer("Player");
+
     }
 
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
-         
-      /*  if(playerIsInDetectionRange && !player.GetComponent<PlayerController>().isOnGround)
+        if (speed != 0)
         {
-            animator.SetBool("DetectedPlayer", true);
-            speed *= Random.Range(0, 2) * 2 - 1; //change to random direction
-            FlipSprite();
-            playerIsInDetectionRange = false;
-        }*/
+            float moveSpeed = playerIsInDetectionRange ? speed : -speed;
+            rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.gameObject.GetComponent<PlayerController>().isOnGround)
+        if (other.gameObject.layer == playerLayer)
         {
-            animator.SetBool("DetectedPlayer", true);
-            speed *= Random.Range(0, 2) * 2 - 1; //change to random direction
-            FlipSprite();
-            playerIsInDetectionRange = false;
+            CheckPlayerFlying(other);
         }
     }
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.layer == playerLayer)
+        {
+            CheckPlayerFlying(other);
+        }
+    }
+    private void CheckPlayerFlying(Collider2D other)
+    {
+        if (!other.gameObject.GetComponent<PlayerController>().isOnGround)
+        {
+            if (!playerIsInDetectionRange)
+            {
+                playerIsInDetectionRange = true;
+                animator.SetBool("DetectedPlayer", true);
+                ChangeDirection();
+            }
+        }
+        else
+        {
+            playerIsInDetectionRange = false;
+            animator.SetBool("DetectedPlayer", false);
+        }
+    }
+    public void HandleDeath()
+    {
+        speed = 0;
+        animator.SetBool("HasBeenHited", true);
+    }
+
+    private void ChangeDirection()
+    {
+        int direction = Random.Range(0, 2) * 2 - 1;
+        speed = Mathf.Abs(speed) * 1.2f * direction;
+
+        rb.velocity = new Vector2(speed, rb.velocity.y);
+
+        Debug.Log("Current speed: " + speed);
+
+        FlipSprite();
+    }
     private void FlipSprite()
     {
         transform.localScale = new Vector3(Mathf.Sign(-speed), 1, 1);
     }
-    private void OnParticleTrigger()
-    {
-        Debug.Log("has been hitted");
-
-        animator.SetBool("HasBeenHited", true);
-        speed = 0;
-    }
-
 }
 
