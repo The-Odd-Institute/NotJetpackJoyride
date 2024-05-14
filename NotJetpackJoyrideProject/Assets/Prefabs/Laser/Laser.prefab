@@ -336,7 +336,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 959d47f60d1208f4a9803f8189da8099, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -512,8 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9d642a05015b448ba395add2ce4262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftLaserEndPositionX: -8
-  rightLaserEndPositionX: 8
+  laserMovementVariance: 2.5
   laserWindup: 2
   laserEase: 1.5
   laserWindupWidth: 0.1

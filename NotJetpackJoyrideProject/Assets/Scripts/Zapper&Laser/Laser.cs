@@ -12,11 +12,13 @@ public class Laser : MonoBehaviour
 
     private LineRenderer lineRenderer;
 
-    private float leftLaserStartPositionX = -11;
-    [SerializeField] private float leftLaserEndPositionX = -8;
+    private float leftLaserStartPositionX;
+    private float leftLaserEndPositionX;
 
-    private float rightLaserStartPositionX = 11;
-    [SerializeField] private float rightLaserEndPositionX = 8;
+    private float rightLaserStartPositionX;
+    private float rightLaserEndPositionX;
+
+    [SerializeField] private float laserMovementVariance;
 
 
     [SerializeField] private float laserWindup;
@@ -51,6 +53,12 @@ public class Laser : MonoBehaviour
         lineRenderer = leftLaser.transform.GetComponent<LineRenderer>();
         rightLaser = this.transform.GetChild(1).gameObject;
         boxCollider = this.transform.GetChild(2).gameObject;
+
+        leftLaserStartPositionX = leftLaser.transform.position.x;
+        rightLaserStartPositionX = rightLaser.transform.position.x;
+
+        leftLaserEndPositionX = leftLaserStartPositionX + laserMovementVariance;
+        rightLaserEndPositionX = rightLaserStartPositionX - laserMovementVariance;
 
         Invoke("LaserWindupActivation", laserWindup / 1.5f);
     }
