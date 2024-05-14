@@ -25,14 +25,14 @@ public class RocketSpawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.F))
         {
-            SpawnSeekingRocket();
+            SpawnTwoStaticRockets();
         }
     }
 
     public void SpawnStaticRocket()
     {
         GameObject newRocket = Instantiate(rocket, this.transform);
-        newRocket.transform.position = new Vector3(transform.parent.position.x, Random.Range(-4, 5), 0);
+        newRocket.transform.position = new Vector3(transform.parent.position.x, Random.Range(-3, 4), 0);
     }
 
     public void SpawnTargetedRocket()
@@ -60,7 +60,7 @@ public class RocketSpawner : MonoBehaviour
         GameObject newRocket1 = Instantiate(rocket, this.transform);
         GameObject newRocket2 = Instantiate(rocket, this.transform);
         newRocket1.transform.position = new Vector3(transform.position.x,4,transform.position.z);
-        newRocket2.transform.position = new Vector3(transform.position.x, -4, transform.position.z);
+        newRocket2.transform.position = new Vector3(transform.position.x, -3, transform.position.z);
     }
 
     public void SpawnThreeStaticRockets()
@@ -69,7 +69,7 @@ public class RocketSpawner : MonoBehaviour
         GameObject newRocket2 = Instantiate(rocket, this.transform);
         GameObject newRocket3 = Instantiate(rocket, this.transform);
         newRocket1.transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-        newRocket2.transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        newRocket3.transform.position = new Vector3(transform.position.x, -4, transform.position.z);
+        newRocket2.transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        newRocket3.transform.position = new Vector3(transform.position.x, -3, transform.position.z);
     }
 }
