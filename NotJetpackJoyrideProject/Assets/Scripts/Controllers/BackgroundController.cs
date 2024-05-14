@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BackgroundController : MonoBehaviour
 {
+    [SerializeField] GameManager gameManager;
+    [SerializeField] PlayerController playerController;
     [SerializeField] private Transform[] backgroundPanels; // array of backgrounds
-    [SerializeField] private float moveSpeed; //will likely get this value from somewhere else later
     [SerializeField] private float panelWidth = 18f; //width of screen is 18
     
+    private float scrollSpeed;
     void Start()
     {
         for (int i = 0; i < backgroundPanels.Length; i++) //set panels starting positions
@@ -19,10 +21,12 @@ public class BackgroundController : MonoBehaviour
 
     void Update()
     {
-        foreach(Transform panel in backgroundPanels)
+        scrollSpeed = gameManager.GetScrollSpeed();
+
+        foreach (Transform panel in backgroundPanels)
         {
             Vector3 newPosition = panel.position;
-            newPosition.x = panel.position.x - (Time.deltaTime * moveSpeed);
+            newPosition.x = panel.position.x - (Time.deltaTime * scrollSpeed);
             panel.position = newPosition;
 
             if(panel.position.x < -panelWidth * 1.5f) //check is panel is fully off screen
