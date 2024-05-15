@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = false;
     private bool isJumping = false;
     private bool jetpackEnabled = false;
-    private bool isDying = false;
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
@@ -51,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (playerIsDead)
         {
             timer += Time.deltaTime;
-            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+            //gameManager.CaptureScreenshot(locationOfScreenshot, 1);
             
             if (timer >= TimeToDeathScreen)
             {
