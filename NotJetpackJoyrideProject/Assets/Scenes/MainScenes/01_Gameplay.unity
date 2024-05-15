@@ -4868,11 +4868,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a830b0a5ca134624f90f44804b5705b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1676684785}
+  playerController: {fileID: 1786194805}
   backgroundPanels:
   - {fileID: 521120176}
   - {fileID: 668819684}
   - {fileID: 222644605}
-  moveSpeed: 10
   panelWidth: 15
 --- !u!4 &1333579045
 Transform:
@@ -7297,6 +7298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28979449bb8a9144c992999c05ed7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeed: 10
+  playerController: {fileID: 1786194805}
 --- !u!1 &1721137948
 GameObject:
   m_ObjectHideFlags: 0
@@ -7474,6 +7477,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8372896668866952817, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
   m_PrefabInstance: {fileID: 283676353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1786194805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+  m_PrefabInstance: {fileID: 283676353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b960e59cbc785248b0d537f10ee8f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1876084319
 GameObject:
   m_ObjectHideFlags: 0

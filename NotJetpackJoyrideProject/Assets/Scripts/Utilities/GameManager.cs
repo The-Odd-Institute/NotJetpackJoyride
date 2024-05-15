@@ -7,6 +7,8 @@ public  class GameManager : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 10.0f;
     [SerializeField] PlayerController playerController;
+
+    private float currentSpeed; 
   
     public void LoadDeathScreen()
     {
@@ -19,19 +21,20 @@ public  class GameManager : MonoBehaviour
 
     public float GetScrollSpeed()
     {
-        return scrollSpeed;
+        if(playerController.GetPlayerDeathStatus())
+        {
+            currentSpeed -= Mathf.Pow((Time.deltaTime * 10),2);
+            currentSpeed = Mathf.Clamp(currentSpeed, 0, 20);
+        }
+        else
+        {
+            currentSpeed = scrollSpeed;
+        }
+        return currentSpeed;
     }
 
     public void SetScrollSpeed(float newSpeed)
     {
         scrollSpeed = newSpeed;
-    }
-
-    private void ScrollSpeedHandler()
-    {
-        if (playerController.GetPlayerDeathStatus())
-        {
-
-        }
     }
 }
