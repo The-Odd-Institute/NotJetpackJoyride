@@ -22,16 +22,18 @@ public class InstantiateZapper : MonoBehaviour
     [SerializeField] private float minRot;
     [SerializeField] private float maxRot;
 
+    private Color orange = new Color(1.0f, 0.64f, 0.0f);
+
     float zapper_Length;
     float zapper_Rotation;
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            InstantiateObject(1);
-        }
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    InstantiateObject(1);
+        //}
     }
 
     public void InstantiateObject(int offset)
@@ -66,7 +68,9 @@ public class InstantiateZapper : MonoBehaviour
             startZapper = newZapper.transform.GetChild(0).gameObject;
             centerPivot = newZapper.transform.GetChild(3).gameObject;
             centerPivot.transform.position = new Vector2(zapper_Length/2, centerPivot.transform.position.y);
-            startZapper.GetComponent<LineRenderer>().startColor = Color.red;
+
+            startZapper.GetComponent<LineRenderer>().startColor = orange;
+            startZapper.GetComponent<LineRenderer>().endColor = orange;
         }
 
 
