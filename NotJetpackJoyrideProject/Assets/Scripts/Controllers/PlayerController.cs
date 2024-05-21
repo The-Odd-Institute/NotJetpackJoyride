@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameObject jetpack;
     [SerializeField] private float jumpForce;
     [SerializeField] private float rocketForce;
     [SerializeField] private float maxVerticalSpeed;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
+    private ParticleSystem boolets;
 
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        boolets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -118,12 +121,13 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        playerIsDead = true;
         timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
-        playerRigidbody.gravityScale = 0.0f;
+        playerRigidbody.gravityScale = 2.5f;
+        Destroy(boolets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+        playerIsDead = true;
 
 
     }
