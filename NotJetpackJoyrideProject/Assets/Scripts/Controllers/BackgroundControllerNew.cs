@@ -16,10 +16,12 @@ public class BackgroundControllerNew : MonoBehaviour
     private int cellCount = default;
     private int indexSortingOrder = 1;
 
-    private void Update()
+    private void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        for (int i = 0; i < 10; ++i)
+        {
             CreateCell();
+        }
     }
 
     private void CreateCell(GameObject cellToCreate, Vector3 position)
@@ -37,7 +39,7 @@ public class BackgroundControllerNew : MonoBehaviour
         currentCellEnding = cellController.CellEnding;
     }
 
-    private void CreateCell()
+    public void CreateCell()
     {
         if (cellCount == 0)
         {
