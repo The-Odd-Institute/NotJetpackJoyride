@@ -5079,6 +5079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b960e59cbc785248b0d537f10ee8f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jetpack: {fileID: 3107427267735102450}
   jumpForce: 10
   rocketForce: 0.6
   maxVerticalSpeed: 10
