@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (playerIsDead)
         {
             timer += Time.deltaTime;
-            //gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
             
             if (timer >= TimeToDeathScreen)
             {
