@@ -159,8 +159,9 @@ MonoBehaviour:
   zapperCoinSpawnDelay: 2
   delayAfterCoinSpawn: 7
   delayAfterZapperSpawn: 3
-  rocketSpawnDelay: 5
-  laserSpawnDelay: 10
+  rocketLaserSpawnDelay: 10
+  delayAfterRocketSpawn: 5
+  delayAfterLaserSpawn: 10
 --- !u!4 &89739799
 Transform:
   m_ObjectHideFlags: 0
@@ -1997,7 +1998,7 @@ MonoBehaviour:
   zapper: {fileID: 191239911500125493, guid: 196469f286ce90c48ad823d284a84238, type: 3}
   rotatingZapper: 0
   minSize: 2
-  maxSize: 5
+  maxSize: 4
   minRot: 0
   maxRot: 180
 --- !u!1 &1908638460
