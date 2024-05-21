@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Obstacle
-  - Hitbox
-  - Npc
+  - Background
   layers:
   - Default
   - TransparentFX
@@ -19,8 +18,8 @@ TagManager:
   - Obstacles
   - KillBox
   - Bullets
-  - Npc
-  - Hitbox
+  - Background
+  - 
   - 
   - 
   - 
@@ -44,6 +43,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background1
+    uniqueID: 3556177521
+    locked: 0
+  - name: Background2
+    uniqueID: 2616466873
+    locked: 0
+  - name: Background3
+    uniqueID: 4167263753
+    locked: 0
   - name: Effects
     uniqueID: 3659459757
+    locked: 0
+  - name: Front1
+    uniqueID: 1546582659
+    locked: 0
+  - name: Front2
+    uniqueID: 1956439927
     locked: 0

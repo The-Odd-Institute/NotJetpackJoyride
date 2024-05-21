@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         if (playerIsDead)
         {
             timer += Time.deltaTime;
-            //gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+           
             
             if (timer >= TimeToDeathScreen)
             {
@@ -123,6 +123,8 @@ public class PlayerController : MonoBehaviour
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 0.0f;
+        gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+
 
     }
 

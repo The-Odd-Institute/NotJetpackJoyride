@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ObstacleKillBox : MonoBehaviour
 {
+    [SerializeField] private BackgroundControllerNew backgroundController;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<PrefabCoin>(out var coin))
@@ -12,9 +14,10 @@ public class ObstacleKillBox : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
         }
-        else if (collision.gameObject.CompareTag("Npc"))
+        else if (collision.gameObject.CompareTag("Background"))
         {
-            Destroy(collision.transform.parent.gameObject);
+            backgroundController.CreateCell();
+            Destroy(collision.gameObject);
         }
     }
 }
