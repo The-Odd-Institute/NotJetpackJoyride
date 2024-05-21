@@ -11,7 +11,7 @@ public  class GameManager : MonoBehaviour
         temp.OnGameOver();
         SceneManager.LoadScene(2);
     }
-    public  void CaptureScreenshot(string filename, int superSize)
+    public void CaptureScreenshot(string filename, int superSize)
     {
         ScreenCapture.CaptureScreenshot("Death.png");
     }
