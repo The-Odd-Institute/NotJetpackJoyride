@@ -1290,8 +1290,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219, y: 189}
-  m_SizeDelta: {x: 443.1, y: 50}
+  m_AnchoredPosition: {x: 824, y: 510}
+  m_SizeDelta: {x: 443.09998, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &104997135
 MonoBehaviour:
@@ -1658,6 +1658,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimationTriggerBox
       objectReference: {fileID: 0}
+    - target: {fileID: 4167625801727194487, guid: 1340550635773a146b5ff17bd931a783, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1697,8 +1701,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -219.0014, y: 221.10004}
-  m_SizeDelta: {x: 443.0972, y: 50}
+  m_AnchoredPosition: {x: 821, y: 456}
+  m_SizeDelta: {x: 443.09717, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &302217578
 MonoBehaviour:
@@ -2323,11 +2327,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4954009206429519048, guid: fa1566ad8002b2146b007b8c726410d4, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 97.2
+      value: -245.2
       objectReference: {fileID: 0}
     - target: {fileID: 4954009206429519048, guid: fa1566ad8002b2146b007b8c726410d4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 60.2
+      value: 137.4
       objectReference: {fileID: 0}
     - target: {fileID: 5133839830087974203, guid: fa1566ad8002b2146b007b8c726410d4, type: 3}
       propertyPath: m_Pivot.x
@@ -7605,6 +7609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zapper: {fileID: 191239911500125493, guid: 196469f286ce90c48ad823d284a84238, type: 3}
+  rotatingZapper: 0
   minSize: 2
   maxSize: 5
   minRot: 0

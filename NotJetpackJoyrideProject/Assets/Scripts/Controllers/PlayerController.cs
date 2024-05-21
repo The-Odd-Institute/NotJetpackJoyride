@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour
     private bool isOnGround = false;
     private bool isJumping = false;
     private bool jetpackEnabled = false;
-    private bool isDying = false;
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
