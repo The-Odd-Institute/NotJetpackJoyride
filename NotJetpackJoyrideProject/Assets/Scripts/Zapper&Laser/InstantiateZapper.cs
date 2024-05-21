@@ -56,7 +56,7 @@ public class InstantiateZapper : MonoBehaviour
         endZapper = newZapper.transform.GetChild(1).gameObject;
         boxCollider = newZapper.transform.GetChild(2).gameObject;
 
-        endZapper.transform.position = new Vector2(zapper_Length, endZapper.transform.position.y);
+        endZapper.transform.localPosition = new Vector2(zapper_Length, boxCollider.transform.localPosition.y);
 
         
         if (rotatingZapper)
