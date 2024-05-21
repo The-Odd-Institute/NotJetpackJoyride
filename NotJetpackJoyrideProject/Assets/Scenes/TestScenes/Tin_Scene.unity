@@ -1658,10 +1658,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnimationTriggerBox
       objectReference: {fileID: 0}
-    - target: {fileID: 4167625801727194487, guid: 1340550635773a146b5ff17bd931a783, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

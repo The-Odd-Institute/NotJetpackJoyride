@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public  class GameManager : MonoBehaviour
 {
-    [SerializeField] float killTime;
-    public void KillPlayer()
+    public void LoadDeathScreen()
     {
-        StartCoroutine(Delay());
+        ScoreManager temp = FindAnyObjectByType<ScoreManager>();
+        temp.OnGameOver();
+        SceneManager.LoadScene(2);
     }
-    IEnumerator Delay()
+    public  void CaptureScreenshot(string filename, int superSize)
     {
+        ScreenCapture.CaptureScreenshot("Death.png");
+    }
 
-        yield return new WaitForSeconds(killTime);
-    }
 }
