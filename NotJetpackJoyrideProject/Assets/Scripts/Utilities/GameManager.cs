@@ -13,7 +13,7 @@ public  class GameManager : MonoBehaviour
     }
     public void CaptureScreenshot(string filename, int superSize)
     {
-        ScreenCapture.CaptureScreenshot("Death.png");
+        ScreenCapture.CaptureScreenshot("Death.png", 1);
     }
 
 }
