@@ -155,7 +155,7 @@ Material:
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
-    - _UnderlayColor: {r: 0, g: 0, b: 0, a: 0.5}
+    - _UnderlayColor: {r: 1, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -167,11 +167,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: DePixelHalbfett SDF
+  m_Name: DePixelHalbfett SDF - White Underlay
   m_EditorClassIdentifier: 
-  hashCode: 942006236
+  hashCode: 1434396266
   material: {fileID: -235155373016164818}
-  materialHashCode: 2075909500
+  materialHashCode: 844957322
   m_Version: 1.1.0
   m_SourceFontFileGUID: f047a9fffcdf86744a898edf7e4f13ec
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: f047a9fffcdf86744a898edf7e4f13ec, type: 3}

@@ -8,6 +8,6 @@ public class MainMenuScoreDisplay : MonoBehaviour
 
     private void Start()
     {
-        highestScoreText.text = "Furthest Distance: " + DataPersistenceManager.instance.GetGameData().highestScore + "M";
+        highestScoreText.text = "High Score: " + DataPersistenceManager.instance.GetGameData().highestScore + "M";
     }
 }
