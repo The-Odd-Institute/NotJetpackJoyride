@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: rocketForce
-      value: 0.4
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4614588675243749277, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_Name

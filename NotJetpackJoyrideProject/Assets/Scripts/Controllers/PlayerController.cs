@@ -106,12 +106,12 @@ public class PlayerController : MonoBehaviour
             {
                 StartJump();
             }
-            else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved) && !isOnGround)
+            else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
             {
                 ActivateJetpack();
                 jetpackEnabled = true;
             }
-            else if (touch.phase == TouchPhase.Ended)
+            if (touch.phase == TouchPhase.Ended)
             {
                 isJumping = false;
                 jetpackEnabled = false;
