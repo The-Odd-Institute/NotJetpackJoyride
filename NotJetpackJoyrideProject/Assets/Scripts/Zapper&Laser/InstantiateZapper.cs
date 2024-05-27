@@ -67,7 +67,7 @@ public class InstantiateZapper : MonoBehaviour
             //change laser color
             startZapper = newZapper.transform.GetChild(0).gameObject;
             centerPivot = newZapper.transform.GetChild(3).gameObject;
-            centerPivot.transform.position = new Vector2(zapper_Length/2, centerPivot.transform.position.y);
+            centerPivot.transform.localPosition = new Vector2(zapper_Length/2, centerPivot.transform.localPosition.y);
 
             startZapper.GetComponent<LineRenderer>().startColor = orange;
             startZapper.GetComponent<LineRenderer>().endColor = orange;
