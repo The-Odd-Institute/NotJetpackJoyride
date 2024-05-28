@@ -999,7 +999,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -5081,11 +5081,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jetpack: {fileID: 3107427267735102450}
   jumpForce: 0.4
-  rocketForce: 0.6
+  rocketForce: 0.4
   maxVerticalSpeed: 10
   downwardForce: 0.8
   invert: 0
-  bounceMaterial: {fileID: 0}
+  bounceMaterial: {fileID: 6200000, guid: 46dd5b5005c621c44965c9fb5916cb15, type: 2}
 --- !u!61 &928937372009994893
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5095,7 +5095,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4614588675243749277}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 46dd5b5005c621c44965c9fb5916cb15, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6044,7 +6044,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
