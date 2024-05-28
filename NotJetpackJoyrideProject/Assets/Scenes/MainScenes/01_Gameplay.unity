@@ -706,7 +706,7 @@ Transform:
   m_GameObject: {fileID: 343406182}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.2940264, y: -7.5207586, z: -1.6111892}
+  m_LocalPosition: {x: 5.2940264, y: -7.74, z: -1.6111892}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1380,7 +1380,7 @@ Transform:
   m_GameObject: {fileID: 974769900}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.01, y: -2.54, z: -1.6542315}
+  m_LocalPosition: {x: 6.01, y: -3.03, z: -1.6542315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserGenerator: {fileID: 243825973}
-  laserInstantiateYVariance: {x: -4, y: 4}
+  laserInstantiateYVariance: {x: -3, y: 4}
 --- !u!1 &1563110455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zapperGenerator: {fileID: 1902892579}
-  zapperInstantiateYVariance: {x: -4, y: 4}
+  zapperInstantiateYVariance: {x: -3, y: 2.5}
 --- !u!4 &1580632125
 Transform:
   m_ObjectHideFlags: 0
@@ -1977,7 +1977,7 @@ Transform:
   m_GameObject: {fileID: 1902892577}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.96, y: -0.53, z: -0.022665858}
+  m_LocalPosition: {x: 3.93, y: -0.53, z: -0.022665858}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
