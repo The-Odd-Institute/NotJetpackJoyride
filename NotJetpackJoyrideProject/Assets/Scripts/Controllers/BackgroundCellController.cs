@@ -22,9 +22,16 @@ public class BackgroundCellController : MonoBehaviour
     private const int Y_MAX = 5;
     private const int BG3_THRESHOLD_MAX = 0;
     private const int BG3_THRESHOLD_MIN = -2;
+    private GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+    }
 
     private void Update()
     {
+        moveSpeed = gameManager.GetScrollSpeed();
         Vector3 newPosition = transform.position;
         newPosition.x -= moveSpeed * Time.deltaTime;
         transform.position = newPosition;

@@ -7,7 +7,7 @@ public class BackgroundControllerNew : MonoBehaviour
     [SerializeField] private GameObject bGCell_Start = default;
     [SerializeField] private GameObject bGCell_Body = default;
     [SerializeField] private GameObject bGCell_End = default;
-    [SerializeField] private float moveSpeed = default;
+    //[SerializeField] private float moveSpeed = default;
     [SerializeField] private Transform currentCellEnding = default;
 
     private const int SECTION_LENGTH_MIN = 2;
@@ -33,7 +33,7 @@ public class BackgroundControllerNew : MonoBehaviour
 
         BackgroundCellController cellController = cell.GetComponent<BackgroundCellController>();
 
-        cellController.MoveSpeed = moveSpeed;
+        //cellController.MoveSpeed = moveSpeed;
         cellController.GenerateCell();
 
         currentCellEnding = cellController.CellEnding;
