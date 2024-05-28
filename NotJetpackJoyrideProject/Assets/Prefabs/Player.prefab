@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jetpack: {fileID: 3107427267735102450}
-  jumpForce: 10
+  jumpForce: 0.4
   rocketForce: 0.6
   maxVerticalSpeed: 10
   downwardForce: 0.8
