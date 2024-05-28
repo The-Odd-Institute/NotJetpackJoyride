@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
 
-    private const float TimeToDeathScreen = 3.0f;
-    private float timer = default;
     private bool playerIsDead = default;
     private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
     void Start()
@@ -31,6 +29,7 @@ public class PlayerController : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //playerRigidbody.sharedMaterial.bounciness = 1;
     }
 
     void Update()
@@ -51,7 +50,12 @@ public class PlayerController : MonoBehaviour
 
         if (playerIsDead)
         {
-            if(gameManager.GetScrollSpeed() <= 0)
+            if (isOnGround)
+            {
+                playerRigidbody.velocity = new Vector2 (0, playerRigidbody.velocity.y * 0.2f);
+                //if(playerRigidbody.velocity.y < 3) { playerRigidbody.sharedMaterial = null; }
+            }
+            if (gameManager.GetScrollSpeed() <= 0)
             {
                 gameManager.LoadDeathScreen();
             }
@@ -117,10 +121,9 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
-        playerRigidbody.gravityScale = 2.5f;
+        playerRigidbody.gravityScale = 2.0f;
         playerRigidbody.sharedMaterial = bounceMaterial;
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
