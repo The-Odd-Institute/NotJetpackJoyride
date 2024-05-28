@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
-    private ParticleSystem boolets;
 
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        boolets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
@@ -124,7 +122,6 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
         playerRigidbody.sharedMaterial = bounceMaterial;
-        Destroy(boolets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
