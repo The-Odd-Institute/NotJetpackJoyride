@@ -5085,6 +5085,7 @@ MonoBehaviour:
   maxVerticalSpeed: 10
   downwardForce: 0.8
   invert: 0
+  bounceMaterial: {fileID: 0}
 --- !u!61 &928937372009994893
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5094,7 +5095,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4614588675243749277}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 46dd5b5005c621c44965c9fb5916cb15, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5155,7 +5156,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!95 &981756191001017537
 Animator:

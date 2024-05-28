@@ -25,9 +25,9 @@ public  class GameManager : MonoBehaviour
     {
         if(playerController.GetPlayerDeathStatus())
         {
-            currentSpeed -= ((currentSpeed/ 4) * Time.deltaTime);
+            currentSpeed -= ((currentSpeed/ 15) * Time.deltaTime);
             currentSpeed = Mathf.Clamp(currentSpeed, 0, 20);
-            if(currentSpeed < 0.5f) { currentSpeed = 0.0f; }
+            if(currentSpeed < 1.0f) { currentSpeed = 0.0f; }
         }
         else
         {
