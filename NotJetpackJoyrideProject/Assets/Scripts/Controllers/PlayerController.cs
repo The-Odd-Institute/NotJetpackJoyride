@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxVerticalSpeed;
     [SerializeField] private float downwardForce;
     [SerializeField] bool invert = false;
+    [SerializeField] private PhysicsMaterial2D bounceMaterial;
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
@@ -52,10 +53,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerIsDead)
         {
-            timer += Time.deltaTime;
-           
-            
-            if (timer >= TimeToDeathScreen)
+            if(gameManager.GetScrollSpeed() <= 0)
             {
                 gameManager.LoadDeathScreen();
             }
@@ -125,11 +123,10 @@ public class PlayerController : MonoBehaviour
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
+        playerRigidbody.sharedMaterial = bounceMaterial;
         Destroy(boolets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
-
-
     }
 
     private void StartJump()
@@ -187,10 +184,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
     public bool GetJetpackStatus()
     {
         if(jetpackEnabled)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool GetPlayerDeathStatus()
+    {
+        if (playerIsDead)
         {
             return true;
         }
