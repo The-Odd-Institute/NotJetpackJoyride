@@ -206,4 +206,9 @@ public class PlayerController : MonoBehaviour
             return false;
         }
     }
+
+    public bool GetPlayerIsOnGround()
+    {
+        return isOnGround;
+    }
 }
