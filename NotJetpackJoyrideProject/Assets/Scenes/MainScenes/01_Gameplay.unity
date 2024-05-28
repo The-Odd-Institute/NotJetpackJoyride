@@ -413,6 +413,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1655542793}
     m_Modifications:
+    - target: {fileID: 928937372009994893, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: jumpForce
       value: 5
@@ -420,6 +424,14 @@ PrefabInstance:
     - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: rocketForce
       value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: bounceMaterial
+      value: 
+      objectReference: {fileID: 6200000, guid: 46dd5b5005c621c44965c9fb5916cb15, type: 2}
+    - target: {fileID: 3716600914500007241, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4614588675243749277, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_Name
@@ -1712,7 +1724,6 @@ MonoBehaviour:
   bGCell_Start: {fileID: 564880108758275235, guid: b47eeb1af62d38140b23af610240508b, type: 3}
   bGCell_Body: {fileID: 7597913611356736825, guid: 3c24680621a893340932874cab5d14cb, type: 3}
   bGCell_End: {fileID: 3748075424410539049, guid: 7fe868014ecc91845aabab01340e142f, type: 3}
-  moveSpeed: 5
   currentCellEnding: {fileID: 0}
 --- !u!4 &1504772853
 Transform:
@@ -1946,11 +1957,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28979449bb8a9144c992999c05ed7c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeed: 10
+  playerController: {fileID: 1786194805}
 --- !u!4 &1786194801 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8372896668866952817, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
   m_PrefabInstance: {fileID: 283676353}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1786194805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+  m_PrefabInstance: {fileID: 283676353}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b960e59cbc785248b0d537f10ee8f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1902892577
 GameObject:
   m_ObjectHideFlags: 0
