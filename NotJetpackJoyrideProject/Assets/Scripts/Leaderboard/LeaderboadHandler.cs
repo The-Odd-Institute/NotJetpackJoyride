@@ -19,11 +19,12 @@ public class LeaderboadHandler : MonoBehaviour
     // Create a leaderboard with this ID in the Unity Cloud Dashboard
     const string LeaderboardId = "JetpackLeaderboard";
 
-    private LeaderboardInformation leaderboardInformation;
+    private LeaderboardInformation leaderboardInformation = new LeaderboardInformation();
     private PlayerData playerData;
 
     [SerializeField] private GameObject LeaderboardDisplayPrefab;
     [SerializeField] private GameObject DisplayParentObject;
+    [SerializeField] private int numberOfPlayerInfoReceived = 10;
 
     [SerializeField] private bool displayBoard = false;
 
@@ -36,7 +37,6 @@ public class LeaderboadHandler : MonoBehaviour
             await SignInAnonymously();
 
         GetPlayerScore();
-        leaderboardInformation = new LeaderboardInformation();
 
         if (displayBoard)
         {
@@ -59,18 +59,43 @@ public class LeaderboadHandler : MonoBehaviour
         await AuthenticationService.Instance.SignInAnonymouslyAsync();
     }
 
-    public async void AddScore(int score)
+    public async void AddScore(int score, int coin)
     {
-        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(LeaderboardId, score);
+        var metadata = new Dictionary<string, string>()
+        {
+            {"coin", coin.ToString()}
+        };
+
+        var options = new AddPlayerScoreOptions()
+        {
+            Metadata = metadata,
+        };
+
+        var scoreResponse = await LeaderboardsService.Instance.AddPlayerScoreAsync(
+            LeaderboardId, 
+            score,
+            options);
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
-        if(displayBoard) { GetScoresBoard(); }
+        if(displayBoard)
+        {
+            GetScoresBoard();
+        }
     }
 
     public async void GetScoresBoard()
     {
+        var options = new GetScoresOptions()
+        {
+            IncludeMetadata = true,
+            Limit = numberOfPlayerInfoReceived
+        };
+
         var scoresResponse =
-            await LeaderboardsService.Instance.GetScoresAsync(LeaderboardId, new GetScoresOptions { Limit = 12});
+            await LeaderboardsService.Instance.GetScoresAsync(
+                LeaderboardId, 
+                options);
+
         var playersJsonDatas = JsonConvert.SerializeObject(scoresResponse);
 
         Debug.Log(playersJsonDatas);
@@ -83,7 +108,8 @@ public class LeaderboadHandler : MonoBehaviour
     public async void GetPlayerScore()
     {
         var scoreResponse =
-            await LeaderboardsService.Instance.GetPlayerScoreAsync(LeaderboardId);
+            await LeaderboardsService.Instance.GetPlayerScoreAsync(
+                LeaderboardId);
 
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
@@ -94,18 +120,21 @@ public class LeaderboadHandler : MonoBehaviour
 
     public void DisplayLeaderBoard()
     {
-        foreach(Transform child in DisplayParentObject.transform)
+        if(DisplayParentObject.transform.childCount > 0)
         {
-            Destroy(child.gameObject);
+            foreach (Transform child in DisplayParentObject.transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
-
+        
         foreach(var player in leaderboardInformation.results)
         {
             GameObject newGameObject = Instantiate(LeaderboardDisplayPrefab, DisplayParentObject.transform);
             TextMeshProUGUI[] texts = newGameObject.GetComponentsInChildren<TextMeshProUGUI>();
             texts[0].text = (player.rank + 1).ToString();
             var nameId = player.playerName.Split("#");
-            texts[1].text = nameId[0] + " (#" + nameId[1] + ")";
+            texts[1].text = nameId[0] + "-" + nameId[1];
             var score = player.score.Split(".");
             texts[2].text = score[0];
         }
