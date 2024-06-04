@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public  class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] private float scrollSpeed = 10.0f;
     [SerializeField] PlayerController playerController;
     [SerializeField] GameObject revivalScreen;
     [SerializeField] private float revivalTime = 5.0f; // time before loading death screen
+
 
     private float currentSpeed;
     private float timer = 0.0f;
@@ -23,33 +24,45 @@ public  class GameManager : MonoBehaviour
     {
         if (isRevivalScreenActive)
         {
+            Debug.Log("Revival screen is active, timer: " + timer); 
             timer += Time.deltaTime;
             if (timer >= revivalTime)
             {
+                Debug.Log("Time is up, loading death screen");
                 LoadDeathScreen();
+                timer = 0.0f;
             }
         }
     }
 
     public void LoadRevivalScreen()
     {
-        revivalScreen.SetActive(true);
-        timer = 0.0f;
-        isRevivalScreenActive = true;
+        if (!isRevivalScreenActive)
+        {
+            Debug.Log("Loading revival screen");
+            revivalScreen.SetActive(true);
+            timer = 0.0f;
+            isRevivalScreenActive = true;
+        }
     }
 
     public void RevivePlayer()
     {
+        Debug.Log("Reviving player");
         playerController.Revive();
         revivalScreen.SetActive(false);
         isRevivalScreenActive = false;
+        timer = 0.0f;
     }
 
     public void LoadDeathScreen()
     {
-        ScoreManager temp = FindAnyObjectByType<ScoreManager>();
-        temp.OnGameOver();
-        SceneManager.LoadScene(2);
+        if(playerController.GetPlayerDeathStatus()==true)
+        {
+            ScoreManager temp = FindAnyObjectByType<ScoreManager>();
+            temp.OnGameOver(); // crashes here
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void CaptureScreenshot(string filename, int superSize)

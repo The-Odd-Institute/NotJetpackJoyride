@@ -21,7 +21,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if(instance != null )
         {
-            Debug.LogError("Found more than one Data Persistence Manager in the scene");
+            //Debug.LogError("Found more than one Data Persistence Manager in the scene");
         }
         instance = this;
     }
@@ -32,7 +32,7 @@ public class DataPersistenceManager : MonoBehaviour
         dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
 
-        Debug.Log("Data Persistant Init");
+     //   Debug.Log("Data Persistant Init");
 
         LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
         if (leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn)
@@ -52,7 +52,7 @@ public class DataPersistenceManager : MonoBehaviour
 
         if(gameData == null)
         {
-            Debug.Log("No data was found. Initializing data to defaults");
+          //  Debug.Log("No data was found. Initializing data to defaults");
             NewGame();
         }
 

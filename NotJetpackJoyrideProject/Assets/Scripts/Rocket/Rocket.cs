@@ -88,7 +88,7 @@ public class Rocket : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Player got hit by a rocket. Ouch!");
+         //   Debug.Log("Player got hit by a rocket. Ouch!");
             Destroy(this.gameObject);
         }
     }

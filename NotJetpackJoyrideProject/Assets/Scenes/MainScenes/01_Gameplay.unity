@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 10
   playerController: {fileID: 1786194805}
-  revivalScreen: {fileID: 0}
+  revivalScreen: {fileID: 1873969718}
   revivalTime: 5
 --- !u!4 &1786194801 stripped
 Transform:
@@ -2233,6 +2233,7 @@ GameObject:
   - component: {fileID: 1873969722}
   - component: {fileID: 1873969721}
   - component: {fileID: 1873969720}
+  - component: {fileID: 1873969723}
   m_Layer: 5
   m_Name: Revive
   m_TagString: Untagged
@@ -2303,7 +2304,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873969721}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1873969723}
+        m_TargetAssemblyTypeName: ReviveButton, Assembly-CSharp
+        m_MethodName: RevivePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1873969721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2342,6 +2355,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1873969718}
   m_CullTransparentMesh: 1
+--- !u!114 &1873969723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1873969718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e29eaf8483813394db152f91c8181dfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1676684785}
 --- !u!1 &1902892577
 GameObject:
   m_ObjectHideFlags: 0

@@ -55,7 +55,8 @@ public class PlayerController : MonoBehaviour
         {
             if(gameManager.GetScrollSpeed() <= 0)
             {
-                gameManager.LoadDeathScreen();
+                //
+                gameManager.LoadRevivalScreen();
             }
         }
     }
@@ -119,15 +120,18 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        timer = 0.0f;
-        animator.SetLayerWeight(1, 1);
-        playerRigidbody.velocity = Vector2.zero;
-        playerRigidbody.gravityScale = 2.5f;
-        playerRigidbody.sharedMaterial = bounceMaterial;
-        Destroy(boolets);
-        gameManager.CaptureScreenshot(locationOfScreenshot, 1);
-        playerIsDead = true;
-        gameManager.LoadRevivalScreen();
+        if (!playerIsDead)
+        {
+            timer = 0.0f;
+            animator.SetLayerWeight(1, 1);
+            playerRigidbody.velocity = Vector2.zero;
+            playerRigidbody.gravityScale = 2.5f;
+            playerRigidbody.sharedMaterial = bounceMaterial;
+            boolets.Stop();
+            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+            playerIsDead = true;
+            gameManager.LoadRevivalScreen();
+        }
     }
     public void Revive()
     {
@@ -136,7 +140,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 1.0f;
         playerRigidbody.sharedMaterial = null;
-        boolets = Instantiate(jetpack.GetComponent<ParticleSystem>(), jetpack.transform);
+        boolets.Play();
         isOnGround = false;
         isJumping = false;
         jetpackEnabled = false;
@@ -174,18 +178,18 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Inside the trigger");
+       // Debug.Log("Inside the trigger");
         if (collision.gameObject.layer == 6)
         {
             isOnGround = true;
             isJumping = false; // We reset isJumping here when we detect ground contact
         }
 
-        Debug.Log(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Obstacle")
         {
-            Debug.Log("detected");
+          //  Debug.Log("detected");
             KillPlayer();
         }
     }
