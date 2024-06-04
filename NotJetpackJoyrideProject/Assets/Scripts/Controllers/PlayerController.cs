@@ -54,9 +54,6 @@ public class PlayerController : MonoBehaviour
         {
             timer += Time.deltaTime;
 
-            ScoreManager temp = FindAnyObjectByType<ScoreManager>();
-            temp.StopDistanceIncrement();
-
             if (timer >= TimeToDeathScreen)
             {
                 gameManager.LoadDeathScreen();
