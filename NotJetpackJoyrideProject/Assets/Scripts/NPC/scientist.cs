@@ -76,7 +76,7 @@ public class scientist : MonoBehaviour
     private void ChangeDirection()
     {
         int direction = Random.Range(0, 2) * 2 - 1;
-        speed = Mathf.Abs(speed) * 1.1f * direction;
+        speed = Mathf.Abs(speed) * direction;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
@@ -86,7 +86,7 @@ public class scientist : MonoBehaviour
     }
     private void FlipSprite()
     {    
-       transform.localScale = new Vector3(Mathf.Sign(-speed), 1, 1);   
+       transform.localScale = new Vector3(Mathf.Sign(speed), 1, 1);   
     }
 }
 

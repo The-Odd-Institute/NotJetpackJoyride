@@ -60,7 +60,12 @@ public class EntitySpawnManager : MonoBehaviour
         }
         if (currentScientistTimer > scientistSpawnDelay)
         {
-            scientistManager.SpawnScientist();
+            int numScientists = Random.Range(1, 4);
+            for (int i = 0; i < numScientists; ++i)
+            {
+                float distanceVariance = Random.Range(0.1f, 0.9f);
+                scientistManager.Invoke("SpawnScientist", (float)i + distanceVariance);
+            }
             currentScientistTimer = 0.0f;
         }
     }
