@@ -12,10 +12,12 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
 
     [Range(1, 20), SerializeField] private float scoreIncrementSpeed = 1;
     [Range(0,10), SerializeField] private int coinsConvertMultiplier = 1;
+    [SerializeField] private bool incrementDistanceOnDeath = true;
 
     private void Start()
     {
         DataPersistenceManager.instance.LoadGame();
+        isRunning = true;
     }
 
     private void Update()
@@ -36,6 +38,7 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
         if(currentScore > highestScore) 
         {
             gameData.highestScore = Mathf.RoundToInt(currentScore);
+            gameData.coinCollected = coinsCollected;
         }
     }
 
@@ -52,8 +55,14 @@ public class ScoreManager : MonoBehaviour, IDataPersistence
     public void OnGameOver()
     {
         isRunning = false;
-        ConvertCoinToScore();
+        //ConvertCoinToScore();
         DataPersistenceManager.instance.SaveGame();
+    }
+
+    public void StopDistanceIncrement()
+    {
+        if (incrementDistanceOnDeath) return;
+        isRunning = false;
     }
 
     public int GetScore { get { return Mathf.RoundToInt(currentScore); } }
