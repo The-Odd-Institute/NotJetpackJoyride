@@ -156,12 +156,14 @@ MonoBehaviour:
   zapperManager: {fileID: 1580632124}
   rocketManager: {fileID: 1908638461}
   laserManager: {fileID: 1542575881}
+  scientistManager: {fileID: 1183418224}
   zapperCoinSpawnDelay: 2
   delayAfterCoinSpawn: 7
   delayAfterZapperSpawn: 3
   rocketLaserSpawnDelay: 10
   delayAfterRocketSpawn: 5
   delayAfterLaserSpawn: 10
+  scientistSpawnDelay: 5
 --- !u!4 &89739799
 Transform:
   m_ObjectHideFlags: 0
@@ -179,6 +181,7 @@ Transform:
   - {fileID: 1580632125}
   - {fileID: 1908638462}
   - {fileID: 1542575880}
+  - {fileID: 1183418223}
   m_Father: {fileID: 770367937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &104997133
@@ -488,6 +491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1655542793}
     m_Modifications:
+    - target: {fileID: 2696218133397418262, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 4160
+      objectReference: {fileID: 0}
     - target: {fileID: 4614588675243749277, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1255,6 +1262,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5513757180042353558, guid: f2c4b04fb0f834f4ebc85683eceaeeaa, type: 3}
   m_PrefabInstance: {fileID: 373569502}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1183418222
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1183418223}
+  - component: {fileID: 1183418224}
+  m_Layer: 0
+  m_Name: ScientistManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1183418223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183418222}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.85, y: -5.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 89739799}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1183418224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183418222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d048e94ceee0d41abf3875dcf3b5fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scientist: {fileID: 1165605545569188933, guid: e4d0ac2753b359a40a84ede975bb7b8b, type: 3}
 --- !u!1 &1242741249
 GameObject:
   m_ObjectHideFlags: 0
