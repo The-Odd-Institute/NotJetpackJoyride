@@ -22,6 +22,7 @@ public class Laser : MonoBehaviour
 
 
     [SerializeField] private float laserWindup;
+    [SerializeField] private float laserActivationLength;
     [SerializeField] private float laserEase;
     //[SerializeField] private float laserPositionY;
 
@@ -75,7 +76,7 @@ public class Laser : MonoBehaviour
         //laser changes
         lineRenderer.startWidth = laserActiveWidth;
         boxCollider.SetActive(true);
-        Invoke("LaserDeActivation", laserWindup);
+        Invoke("LaserDeActivation", laserActivationLength);
     }
 
     private void LaserDeActivation()

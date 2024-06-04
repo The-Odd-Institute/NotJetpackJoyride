@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class JetpackFX : MonoBehaviour
 {
-    [SerializeField] GameObject shrapnel;
+    [SerializeField] GameObject bullets;
+    [SerializeField] GameObject shells;
+
     PlayerController playerController;
     ParticleSystem bulletFX;
-    private List<ParticleCollisionEvent> collisionEvents;
+    ParticleSystem shellFX;
+
     // Start is called before the first frame update
     void Start()
     {
         playerController = GetComponentInParent<PlayerController>();
-        bulletFX = GetComponentInParent<ParticleSystem>();
-        collisionEvents = new List<ParticleCollisionEvent>();
+        bulletFX = bullets.GetComponent<ParticleSystem>();
+        shellFX = shells.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -24,42 +27,29 @@ public class JetpackFX : MonoBehaviour
             playerController = GetComponentInParent<PlayerController>();
             return;
         }
-        if (bulletFX == null)
+        if (bulletFX == null || shellFX == null)
         {
-            bulletFX = GetComponentInParent<ParticleSystem>();
+            bulletFX = bullets.GetComponent<ParticleSystem>();
+            bulletFX = bullets.GetComponent<ParticleSystem>();
             return;
         }
-        if (playerController.GetJetpackStatus()) 
-        { 
-            //bulletFX.Play();
-            var emitter = bulletFX.emission;
-            emitter.enabled = true;
-        }
-        else 
-        { 
-            //bulletFX.Stop();
+        if (!playerController.GetJetpackStatus() || playerController.GetPlayerDeathStatus()) 
+        {
             var emitter = bulletFX.emission;
             emitter.enabled = false;
+
+            emitter = shellFX.emission;
+            emitter.enabled = false;
+        }
+        else 
+        {
+            var emitter = bulletFX.emission;
+            emitter.enabled = true;
+
+            emitter = shellFX.emission;
+            emitter.enabled = true;
         }
     }
 
-    private void OnParticleCollision(GameObject other)
-    {
-        //int safeLength = bulletFX.GetSafeCollisionEventSize();
-        //if (collisionEvents.Length < safeLength)
-        //    collisionEvents = new ParticleCollisionEvent[safeLength];
-        //int random = Random.Range(0, 2);
-        //if(random == 1)
-        //{
-        //    return;
-        //}
-        int numCollisionEvents = bulletFX.GetCollisionEvents(other, collisionEvents);
-        int i = 0;
-        while (i < numCollisionEvents)
-        {
-            Vector3 collisionHitLoc = collisionEvents[i].intersection; 
-            Instantiate(shrapnel, collisionHitLoc, Quaternion.identity);
-            i++; 
-        }
-    }
+    
 }

@@ -36,7 +36,12 @@ public class InstantiateZapper : MonoBehaviour
         //}
     }
 
-    public void InstantiateObject(int offset)
+    public void SetRotating(bool state)
+    {
+        rotatingZapper = state;
+    }
+
+    public void InstantiateObject(float offset)
     {
 
 
