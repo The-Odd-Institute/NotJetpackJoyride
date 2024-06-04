@@ -423,6 +423,8 @@ MonoBehaviour:
   groundList: {fileID: 6077399462520557356}
   backGround1: {fileID: 9103573304073124225}
   backGround3: {fileID: 1691861153411137811}
+  backGround4: {fileID: 0}
+  backGround5: {fileID: 0}
 --- !u!61 &7892373989097919702
 BoxCollider2D:
   m_ObjectHideFlags: 0
