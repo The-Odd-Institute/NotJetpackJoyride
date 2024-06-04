@@ -3,6 +3,7 @@ using UnityEngine;
 public class PrefabCoin : MonoBehaviour
 {
     [SerializeField] ParticleSystem coinCollectParticle;
+    [SerializeField] private AudioClip coinEffect;
 
     private Animator animator;
     private const float ANIMATION_DELAY_TIME = 0.75f;
@@ -11,10 +12,13 @@ public class PrefabCoin : MonoBehaviour
     private Transform parent = default;
     public Transform Parent { set => parent = value; }
 
+  
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            
             CollectCoin();
         }
     }

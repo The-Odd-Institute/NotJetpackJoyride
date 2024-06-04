@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
-    private ParticleSystem boolets;
+    private MusicSFXController musicSFXController;
+    private AudioSource audioSource;
 
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
@@ -31,8 +32,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        boolets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
+        musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
     void Update()
@@ -119,18 +121,20 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.PlayerDeath);
         timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
         playerRigidbody.sharedMaterial = bounceMaterial;
-        Destroy(boolets);
+
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
 
     private void StartJump()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.Jump);
         playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
         isJumping = true; 
         isOnGround = false; 
@@ -173,6 +177,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("detected");
             KillPlayer();
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            musicSFXController.PlaySound(audioSource, SoundType.CoinCollect);
         }
     }
 
