@@ -127,6 +127,20 @@ public class PlayerController : MonoBehaviour
         Destroy(boolets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
+        gameManager.LoadRevivalScreen();
+    }
+    public void Revive()
+    {
+        playerIsDead = false;
+        animator.SetLayerWeight(1, 0);
+        playerRigidbody.velocity = Vector2.zero;
+        playerRigidbody.gravityScale = 1.0f;
+        playerRigidbody.sharedMaterial = null;
+        boolets = Instantiate(jetpack.GetComponent<ParticleSystem>(), jetpack.transform);
+        isOnGround = false;
+        isJumping = false;
+        jetpackEnabled = false;
+
     }
 
     private void StartJump()
