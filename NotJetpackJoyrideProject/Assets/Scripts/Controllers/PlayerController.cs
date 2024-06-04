@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
             }
             else // on the ground
             {
+                Debug.Log("Down and on Ground");
                 isOnGround = false; 
                 forceType = ForceType.Jump;
                 // Jump();
@@ -143,7 +144,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            forceType = ForceType.Gravity;
+            if (!isOnGround) // only push downwards if not on the ground
+                forceType = ForceType.Gravity;
         }
         
         //ApplyGravity();
