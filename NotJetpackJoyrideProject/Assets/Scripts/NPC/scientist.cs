@@ -76,7 +76,7 @@ public class scientist : MonoBehaviour
     private void ChangeDirection()
     {
         int direction = Random.Range(0, 2) * 2 - 1;
-        speed = Mathf.Abs(speed) * 1.2f * direction;
+        speed = Mathf.Abs(speed) * 1.1f * direction;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 

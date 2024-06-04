@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletHitNpc : MonoBehaviour
 {
-    [SerializeField] GameObject Scientist;
+    //[SerializeField] GameObject Scientist;
     private void OnParticleCollision(GameObject collision)
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
@@ -12,8 +12,7 @@ public class BulletHitNpc : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Npc"))
         {
             Debug.Log("hitbox hitted");
-            Scientist.GetComponent<scientist>().HandleDeath();
+            collision.GetComponent<scientist>().HandleDeath();
         }
-
     }
 }
