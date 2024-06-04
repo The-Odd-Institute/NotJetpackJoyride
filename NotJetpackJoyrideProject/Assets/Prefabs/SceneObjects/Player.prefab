@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2696218133397418262}
   - component: {fileID: 4670265263844397240}
   - component: {fileID: 2155311481449378207}
+  - component: {fileID: 4848887412147940278}
   m_Layer: 10
   m_Name: Bullets
   m_TagString: Untagged
@@ -3928,7 +3929,7 @@ ParticleSystem:
       serializedVersion: 2
       m_Bits: 64
     maxCollisionShapes: 256
-    quality: 2
+    quality: 1
     voxelSize: 0.5
     collisionMessages: 1
     collidesWithDynamic: 1
@@ -4977,6 +4978,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shrapnel: {fileID: 68143650122443359, guid: f066bbdd56249614f828f4c0658987a5, type: 3}
+--- !u!114 &4848887412147940278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3107427267735102450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc6b01241e8ea249bfbcfad7287abd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4614588675243749277
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,10 @@ public class BulletHitNpc : MonoBehaviour
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
 
-        if (collision.gameObject.layer == 10)
+        if (collision.layer == 12)
         {
             Debug.Log("Scientist shot");
-            gameObject.GetComponent<scientist>().HandleDeath();
+            collision.GetComponent<scientist>().HandleDeath();
         }
     }
 }
