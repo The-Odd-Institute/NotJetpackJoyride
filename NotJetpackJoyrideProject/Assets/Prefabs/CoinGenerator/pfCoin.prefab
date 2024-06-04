@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -944147860745526706}
   m_Layer: 8
   m_Name: pfCoin
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCollectParticle: {fileID: 5071962577352363143, guid: 165872fab4a44344a9f924f183d1e8e1, type: 3}
+  coinEffect: {fileID: 0}
 --- !u!61 &-944147860745526706
 BoxCollider2D:
   m_ObjectHideFlags: 0
