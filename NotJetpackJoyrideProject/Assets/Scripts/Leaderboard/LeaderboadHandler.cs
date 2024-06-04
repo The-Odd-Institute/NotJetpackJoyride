@@ -75,6 +75,7 @@ public class LeaderboadHandler : MonoBehaviour
             LeaderboardId, 
             score,
             options);
+
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
         if(displayBoard)
@@ -107,9 +108,15 @@ public class LeaderboadHandler : MonoBehaviour
 
     public async void GetPlayerScore()
     {
+        var options = new GetPlayerScoreOptions()
+        {
+            IncludeMetadata = true
+        };
+
         var scoreResponse =
             await LeaderboardsService.Instance.GetPlayerScoreAsync(
-                LeaderboardId);
+                LeaderboardId,
+                options);
 
         Debug.Log(JsonConvert.SerializeObject(scoreResponse));
 
@@ -137,6 +144,12 @@ public class LeaderboadHandler : MonoBehaviour
             texts[1].text = nameId[0] + "-" + nameId[1];
             var score = player.score.Split(".");
             texts[2].text = score[0];
+
+            player.ParseMetadata();
+            if(player.Metadata != null)
+            {
+                Debug.Log(player.Metadata.coin);
+            }
         }
     }
 

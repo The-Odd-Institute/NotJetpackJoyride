@@ -1,20 +1,33 @@
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-[System.Serializable]
+
+[Serializable]
+public class Metadata
+{
+    public string coin;
+}
+
+[Serializable]
 public class PlayerData
 {
     public string playerId { get; set; }
     public string playerName { get; set; }
     public int rank { get; set; }
     public string score { get; set; }
-    public string metadata { get; set; }
+    public string updatedTime { get; set; }
+
+    [JsonProperty("metadata")]
+    public string MetadataJson { get; set; }
 
     [JsonIgnore]
-    public Dictionary<string, string> Metadata
+    public Metadata Metadata { get; set; }
+
+    public void ParseMetadata()
     {
-        get
+        if (!string.IsNullOrEmpty(MetadataJson))
         {
-            return JsonConvert.DeserializeObject<Dictionary<string, string>>(metadata);
+            Metadata = JsonConvert.DeserializeObject<Metadata>(MetadataJson);
         }
     }
 }
