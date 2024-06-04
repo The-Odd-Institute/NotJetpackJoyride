@@ -14,6 +14,10 @@ public class ObstacleKillBox : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
         }
+        else if (collision.gameObject.CompareTag("Scientist"))
+        {
+            Destroy(collision.gameObject);
+        }
         else if (collision.gameObject.CompareTag("Background"))
         {
             backgroundController.CreateCell();
