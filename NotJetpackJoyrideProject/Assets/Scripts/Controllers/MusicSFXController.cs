@@ -4,25 +4,30 @@ using UnityEngine;
 
 public enum SoundType
 { 
-    Jump = 0,
-    PlayerDeath = 1,
-    CoinCollect = 2,
-    JetpackSound = 3,
-    UiClick = 4,
-    Laser = 5,
-    MissileCountDown = 6,
-    MissileLaunch = 7
+    Jump,
+    PlayerDeath,
+    CoinCollect,
+    JetpackSound,
+    UiClick,
+    Laser,
+    MissileCountDown,
+    MissileLaunch
 
 }
 
 
 public class MusicSFXController : MonoBehaviour
 {
+    [SerializeField] private AudioSource bgSource;
     [SerializeField] private List<AudioClip> sounds;
-
-   public void PlaySound(AudioSource source, SoundType type)
+   
+    public void PlaySound(AudioSource source, SoundType type)
     {
         source.clip = sounds[(int)type];
         source.Play();
+    }
+    public void UiSFX()
+    {
+        PlaySound(bgSource, SoundType.UiClick);
     }
 }
