@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce; // 25
     [SerializeField] private float jetpackForce;
     [SerializeField] private float gravityForce; // -9.8
-
     [SerializeField] private PhysicsMaterial2D bounceMaterial;
+    [SerializeField] private AudioSource audioSource;
+
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
     private ParticleSystem bullets;
-
+    private MusicSFXController musicSFXController;
 
     [SerializeField]
     private float boostFactor = 1.0f;
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
         bullets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
     void Update()
@@ -105,7 +107,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             if (isOnGround) // on ground
+            {
+                musicSFXController.PlaySound(audioSource, SoundType.Jump);
                 forceType = ForceType.Jump;
+            }
+                
 
             else // mid air
             {
@@ -181,11 +187,13 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.PlayerDeath);
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
         playerRigidbody.sharedMaterial = bounceMaterial;
         Destroy(bullets);
+        jetpackEnabled = false;
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
@@ -198,6 +206,8 @@ public class PlayerController : MonoBehaviour
         // KEEP
         if (collision.gameObject.tag == "Obstacle")
             KillPlayer();
+        if (collision.gameObject.tag == "Coin")
+            musicSFXController.PlaySound(audioSource, SoundType.CoinCollect);
     }
 
     void OnTriggerStay2D(Collider2D collision)

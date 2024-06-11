@@ -495,6 +495,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: JetpackSFX
       objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: forceMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 283676354}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: boostFactor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: gravityForce
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528109574251002470, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+      propertyPath: jetpackForce
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2696218133397418262, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: CollisionModule.quality
       value: 0
@@ -510,7 +534,7 @@ PrefabInstance:
     - target: {fileID: 4231705031609308355, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a81952c0474294f4491d1a1932cca4a7, type: 2}
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 4614588675243749277, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_Name
       value: Player
@@ -525,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8372896668866952817, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -591.4263
+      value: -586.91
       objectReference: {fileID: 0}
     - target: {fileID: 8372896668866952817, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
       propertyPath: m_LocalPosition.y
@@ -577,6 +601,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2049491835}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+--- !u!82 &283676354 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5447038820378722535, guid: 5b0da06c033ff5f44822858cf26e9208, type: 3}
+  m_PrefabInstance: {fileID: 283676353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &296302223
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2376,6 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JetpackAudio: {fileID: 2049491835}
+  player: {fileID: 1786194805}
 --- !u!82 &2049491835
 AudioSource:
   m_ObjectHideFlags: 0

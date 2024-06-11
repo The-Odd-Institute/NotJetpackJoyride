@@ -38,16 +38,16 @@ public class JetpackFX : MonoBehaviour
             var emitter = bulletFX.emission;
             emitter.enabled = false;
 
-            emitter = shellFX.emission;
-            emitter.enabled = false;
+            var emitterShell = shellFX.emission;
+            emitterShell.enabled = false;
         }
         else 
         {
             var emitter = bulletFX.emission;
             emitter.enabled = true;
 
-            emitter = shellFX.emission;
-            emitter.enabled = true;
+            var emitterShell = shellFX.emission;
+            emitterShell.enabled = true;
         }
     }
 
