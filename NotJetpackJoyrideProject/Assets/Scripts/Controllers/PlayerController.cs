@@ -216,4 +216,7 @@ public class PlayerController : MonoBehaviour
 
     public bool GetJetpackStatus() => jetpackEnabled;
     public bool GetPlayerDeathStatus() => playerIsDead;
+
+    public bool GetPlayerIsOnGround() => isOnGround;
+
 }
