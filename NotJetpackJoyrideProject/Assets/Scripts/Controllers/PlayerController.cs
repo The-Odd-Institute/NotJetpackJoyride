@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float downwardForce;
     [SerializeField] bool invert = false;
 
+    [SerializeField] private AudioSource audioSource;
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
     private bool isOnGround = false;
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private GameManager gameManager;
     private MusicSFXController musicSFXController;
-    private AudioSource audioSource;
 
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioSource = GetComponent<AudioSource>();
         musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
