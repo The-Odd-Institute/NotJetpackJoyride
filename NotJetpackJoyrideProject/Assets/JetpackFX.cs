@@ -30,7 +30,7 @@ public class JetpackFX : MonoBehaviour
         if (bulletFX == null || shellFX == null)
         {
             bulletFX = bullets.GetComponent<ParticleSystem>();
-            bulletFX = bullets.GetComponent<ParticleSystem>();
+            shellFX = shells.GetComponent<ParticleSystem>();
             return;
         }
         if (!playerController.GetJetpackStatus() || playerController.GetPlayerDeathStatus()) 
