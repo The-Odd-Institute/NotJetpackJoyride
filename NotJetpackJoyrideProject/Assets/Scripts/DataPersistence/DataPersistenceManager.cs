@@ -32,8 +32,6 @@ public class DataPersistenceManager : MonoBehaviour
         dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
 
-        Debug.Log("Data Persistant Init");
-
         LeaderboadHandler leaderboadHandler = FindAnyObjectByType<LeaderboadHandler>();
         if (leaderboadHandler != null && AuthenticationService.Instance.IsSignedIn)
         {

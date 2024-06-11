@@ -2,201 +2,208 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+enum ForceType
+{
+    Gravity,
+    Jetpack,
+    Jump
+}
+
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private ForceMode2D forceMode;
     [SerializeField] private GameObject jetpack;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float rocketForce;
-    [SerializeField] private float maxVerticalSpeed;
-    [SerializeField] private float downwardForce;
-    [SerializeField] bool invert = false;
+    [SerializeField] private float jumpForce; // 25
+    [SerializeField] private float jetpackForce;
+    [SerializeField] private float gravityForce; // -9.8
+
+    [SerializeField] private PhysicsMaterial2D bounceMaterial;
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
-    private bool isOnGround = false;
-    private bool isJumping = false;
+    private bool isOnGround = true;
     private bool jetpackEnabled = false;
-    private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
-    private MusicSFXController musicSFXController;
-    private AudioSource audioSource;
+    private ParticleSystem bullets;
 
-    private const float TimeToDeathScreen = 3.0f;
-    private float timer = default;
+
+    [SerializeField]
+    private float boostFactor = 1.0f;
+    private float boost = 1.0f;
+
     private bool playerIsDead = default;
     private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
-    private int bounceCount = 0;
-    private float groundTimer = 0;
-    private float deathVelocity;
+
+    private ForceType forceType = ForceType.Gravity;
     void Start()
     {
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
+        bullets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        audioSource = GetComponent<AudioSource>();
-        musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
     void Update()
     {
         animator.SetBool("IsGrounded", isOnGround);
         animator.SetBool("jetpackEnabled", jetpackEnabled);
-        InvertHandler();
-        if(!playerIsDead)
-        {
-            InputHandler();
-            TouchInputHandler();
-        }
-        LimitVerticalSpeed();
-        if (!Input.GetKey(KeyCode.Space) && !isOnGround && !isJumping)
-        {
-            ApplyGravity();
-        }
+        // InvertHandler();
 
         if (playerIsDead)
         {
-            if(isOnGround && bounceCount < 3) 
-            { 
-                if (groundTimer > 0.05)
-                {
-                    playerRigidbody.AddForce(new Vector2(0, 100/(bounceCount+1)), ForceMode2D.Force);
-                    bounceCount++;
-                    groundTimer = 0;
-                    Debug.Log("Bounced");
-                }
-                else
-                {
-                    groundTimer += Time.deltaTime;
-                }
-            }
+            forceType = ForceType.Gravity;
             if (gameManager.GetScrollSpeed() <= 0)
-            {
                 gameManager.LoadDeathScreen();
-            }
-        }
-    }
-    private void ApplyGravity()
-    {
-        playerRigidbody.AddForce(new Vector2(0, -invertMod * downwardForce * Time.deltaTime), ForceMode2D.Impulse);
-    }
-    private void LimitVerticalSpeed()
-    {
-        float currentVerticalSpeed = playerRigidbody.velocity.y;
-        if (currentVerticalSpeed > maxVerticalSpeed)
-        {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, maxVerticalSpeed);
-        }
-        else if (currentVerticalSpeed < -maxVerticalSpeed)
-        {
-            playerRigidbody.velocity = new Vector2(playerRigidbody.velocity.x, -maxVerticalSpeed);
-        }
-    }
-    private void InputHandler()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !invert)
-        {
-            StartJump();
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            ActivateJetpack();
-            jetpackEnabled = true;
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (!playerIsDead)
         {
-            isJumping = false;
+            #if UNITY_EDITOR || UNITY_STANDALONE
+                DesktopInput();
+            #elif UNITY_IOS || UNITY_ANDROID
+                MobileInput();
+            #endif
+        }
+
+
+
+        // apply the force
+        ApplyForce();
+    }
+
+    private void ApplyForce()
+    {
+        float y;
+        switch (forceType)
+        {
+            case ForceType.Jetpack:
+                y = jetpackForce * Time.deltaTime;
+                // Debug.Log ("In Jet mode");
+
+                break;
+            case ForceType.Jump:
+                y = jumpForce * Time.deltaTime;
+                // Debug.Log ("In JUMP mode");
+
+                break;
+            default:
+                y = gravityForce * Time.deltaTime;
+                // Debug.Log ("In GRAVITY mode");
+
+                break;
+        }
+
+        Vector2 force = new Vector2(0, y * boost);
+        playerRigidbody.AddForce(force, forceMode);
+    }
+
+    private void DesktopInput()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (isOnGround) // on ground
+                forceType = ForceType.Jump;
+
+            else // mid air
+            {
+                jetpackEnabled = true;
+                forceType = ForceType.Jetpack;
+            }
+            boost = 1;
+        }
+        else
+        {
+            boost = 1;
+            forceType = ForceType.Gravity;
             jetpackEnabled = false;
         }
 
-    }
-    private void TouchInputHandler()
-    {
-        if (Input.touchCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Touch touch = Input.GetTouch(0);
+            if (!isOnGround)
+            {
+                boost = boostFactor;
 
-            if (touch.phase == TouchPhase.Began && isOnGround && !invert)
-            {
-                StartJump();
-            }
-            else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
-            {
-                ActivateJetpack();
                 jetpackEnabled = true;
-            }
-            if (touch.phase == TouchPhase.Ended)
-            {
-                isJumping = false;
-                jetpackEnabled = false;
+                forceType = ForceType.Jetpack;
             }
         }
+    }
+    private void MobileInput()
+    {
+        // Check if there is at least one touch
+        if (Input.touchCount > 0)
+        {
+            // Get the first touch
+            Touch touch = Input.GetTouch(0);
+
+           if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+            {
+                if (isOnGround) // on ground
+                    forceType = ForceType.Jump;
+                else // mid air
+                {
+                    jetpackEnabled = true;
+                    forceType = ForceType.Jetpack;
+                }
+                boost = 1;
+            }
+            else
+            {
+                boost = 1;
+                forceType = ForceType.Gravity;
+                jetpackEnabled = false; 
+            }
+
+
+            // Check the touch phase
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (!isOnGround)
+                {
+                    boost = boostFactor;
+
+                    jetpackEnabled = true;
+                    forceType = ForceType.Jetpack;
+                }
+            }
+        }
+        else
+            {
+                boost = 1;
+                forceType = ForceType.Gravity;
+                jetpackEnabled = false; 
+            }
     }
 
     private void KillPlayer()
     {
-        musicSFXController.PlaySound(audioSource, SoundType.PlayerDeath);
-        timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
+        playerRigidbody.sharedMaterial = bounceMaterial;
+        Destroy(bullets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
 
-    private void StartJump()
-    {
-        musicSFXController.PlaySound(audioSource, SoundType.Jump);
-        playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
-        isJumping = true; 
-        isOnGround = false; 
-    }
-
-    private void ActivateJetpack()
-    {
-        float boostFactor = 1.0f;
-        if (playerRigidbody.velocity.y < 0) // Adds small boost if falling
-        {
-            boostFactor += Mathf.Abs(playerRigidbody.velocity.y) / maxVerticalSpeed;
-        }
-        playerRigidbody.AddForce(new Vector2(0, rocketForce * invertMod * boostFactor), ForceMode2D.Force);
-    }
-    private void InvertHandler()
-    {
-        if (!invert)
-        {
-            invertMod = 1;
-            playerTransform.transform.rotation = Quaternion.Euler(0, 0, 0);
-            return;
-        }
-
-        invertMod = -1; // invert mod is just to flip the gravity and forces when inverting.
-        playerTransform.transform.rotation = Quaternion.Euler(0, 180, 180);
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Inside the trigger");
         if (collision.gameObject.layer == 6)
-        {
             isOnGround = true;
-            isJumping = false; // We reset isJumping here when we detect ground contact
-        }
 
-        Debug.Log(collision.gameObject.tag);
-
+        // KEEP
         if (collision.gameObject.tag == "Obstacle")
-        {
-            Debug.Log("detected");
             KillPlayer();
-        }
+    }
 
-        if (collision.gameObject.tag == "Coin")
-        {
-            musicSFXController.PlaySound(audioSource, SoundType.CoinCollect);
-        }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+            isOnGround = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -207,31 +214,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public bool GetJetpackStatus()
-    {
-        if(jetpackEnabled)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    public bool GetPlayerDeathStatus()
-    {
-        if (playerIsDead)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    public bool GetPlayerIsOnGround()
-    {
-        return isOnGround;
-    }
+    public bool GetJetpackStatus() => jetpackEnabled;
+    public bool GetPlayerDeathStatus() => playerIsDead;
 }
