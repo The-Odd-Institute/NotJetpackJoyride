@@ -6,35 +6,33 @@ using UnityEngine;
 enum ForceType
 {
     Gravity,
-    Rocket,
+    Jetpack,
     Jump
 }
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField] private ForceMode2D forceMode;
     [SerializeField] private GameObject jetpack;
     [SerializeField] private float jumpForce; // 25
-    [SerializeField] private float rocketForce;
-    [SerializeField] private float maxVerticalSpeed;
-    [SerializeField] private float gravity; // -9.8
+    [SerializeField] private float jetpackForce;
+    [SerializeField] private float gravityForce; // -9.8
 
-    [SerializeField] bool invert = false;
     [SerializeField] private PhysicsMaterial2D bounceMaterial;
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
-    private bool isOnGround = false;
-    private bool isJumping = false;
-    // private bool midAir = false;
+    private bool isOnGround = true;
     private bool jetpackEnabled = false;
-    private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
-    private ParticleSystem boolets;
+    private ParticleSystem bullets;
 
-    private const float TimeToDeathScreen = 3.0f;
-    private float timer = default;
+
+    [SerializeField]
+    private float boostFactor = 1.0f;
+    private float boost = 1.0f;
+
     private bool playerIsDead = default;
     private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
 
@@ -44,44 +42,20 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        boolets = jetpack.GetComponent<ParticleSystem>();
+        bullets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-
-    void FixedUpdate()
-    {
-        float y;
-        switch (forceType)
-        {
-            case ForceType.Gravity:
-                y = gravity * Time.fixedDeltaTime;
-                break;
-            case ForceType.Rocket:
-                y = rocketForce * Time.fixedDeltaTime;
-                break;
-            case ForceType.Jump:
-                y = jumpForce * Time.fixedDeltaTime;
-                break;
-            default:
-                y = 0;
-                break;
-        }
-
-        Vector2 force = new Vector2(0, y);
-        playerRigidbody.AddForce(force, ForceMode2D.Force);
     }
 
     void Update()
     {
         animator.SetBool("IsGrounded", isOnGround);
         animator.SetBool("jetpackEnabled", jetpackEnabled);
-       // InvertHandler();
+        // InvertHandler();
 
         if (playerIsDead)
         {
             forceType = ForceType.Gravity;
-            if(gameManager.GetScrollSpeed() <= 0)
+            if (gameManager.GetScrollSpeed() <= 0)
                 gameManager.LoadDeathScreen();
         }
 
@@ -94,171 +68,152 @@ public class PlayerController : MonoBehaviour
             #endif
         }
 
-       // LimitVerticalSpeed();
-    }
 
 
- 
-    private void ApplyGravity()
-    {
-        Vector2 gravity = new Vector2(0, this.gravity * Time.deltaTime);
-        playerRigidbody.AddForce(gravity, ForceMode2D.Impulse);
+        // apply the force
+        ApplyForce();
     }
-    private void LimitVerticalSpeed()
+
+    private void ApplyForce()
     {
-        int sign = 0;
-        if (playerRigidbody.velocity.y > maxVerticalSpeed) sign = 1;
-        else if (playerRigidbody.velocity.y < -maxVerticalSpeed) sign = -1;
-            
-        playerRigidbody.velocity = new Vector2( playerRigidbody.velocity.x, 
-                                                maxVerticalSpeed * sign);
+        float y;
+        switch (forceType)
+        {
+            case ForceType.Jetpack:
+                y = jetpackForce * Time.deltaTime;
+                // Debug.Log ("In Jet mode");
+
+                break;
+            case ForceType.Jump:
+                y = jumpForce * Time.deltaTime;
+                // Debug.Log ("In JUMP mode");
+
+                break;
+            default:
+                y = gravityForce * Time.deltaTime;
+                // Debug.Log ("In GRAVITY mode");
+
+                break;
+        }
+
+        Vector2 force = new Vector2(0, y * boost);
+        playerRigidbody.AddForce(force, forceMode);
     }
+
     private void DesktopInput()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
-            if (!isOnGround) // mid air
-            {
-                // use jetpack
-                jetpackEnabled = true;
-                forceType = ForceType.Rocket;
-            }
-            else // on the ground
-            {
-                Debug.Log("Down and on Ground");
-                isOnGround = false; 
+            if (isOnGround) // on ground
                 forceType = ForceType.Jump;
-                // Jump();
+
+            else // mid air
+            {
+                jetpackEnabled = true;
+                forceType = ForceType.Jetpack;
             }
-        }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            // ActivateJetpack();
-            jetpackEnabled = true;
-            forceType = ForceType.Rocket;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            jetpackEnabled = false;
-            // if (!isOnGround)
+            boost = 1;
         }
         else
         {
-            if (!isOnGround) // only push downwards if not on the ground
-                forceType = ForceType.Gravity;
+            boost = 1;
+            forceType = ForceType.Gravity;
+            jetpackEnabled = false;
         }
-        
-        //ApplyGravity();
 
-        // if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !invert)
-        //     Jump();
-        
-        // if (Input.GetKeyUp(KeyCode.Space))
-        // {
-        //     isJumping = false;
-        //     jetpackEnabled = false;
-        // }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!isOnGround)
+            {
+                boost = boostFactor;
 
+                jetpackEnabled = true;
+                forceType = ForceType.Jetpack;
+            }
+        }
     }
     private void MobileInput()
     {
+        // Check if there is at least one touch
         if (Input.touchCount > 0)
         {
+            // Get the first touch
             Touch touch = Input.GetTouch(0);
 
-            if (touch.phase == TouchPhase.Began && isOnGround && !invert)
+           if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
             {
+                if (isOnGround) // on ground
+                    forceType = ForceType.Jump;
+                else // mid air
+                {
+                    jetpackEnabled = true;
+                    forceType = ForceType.Jetpack;
+                }
+                boost = 1;
             }
-            else if ((touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved))
+            else
             {
-
+                boost = 1;
+                forceType = ForceType.Gravity;
+                jetpackEnabled = false; 
             }
-            if (touch.phase == TouchPhase.Ended)
-            {
 
+
+            // Check the touch phase
+            if (touch.phase == TouchPhase.Began)
+            {
+                if (!isOnGround)
+                {
+                    boost = boostFactor;
+
+                    jetpackEnabled = true;
+                    forceType = ForceType.Jetpack;
+                }
             }
         }
+        else
+            {
+                boost = 1;
+                forceType = ForceType.Gravity;
+                jetpackEnabled = false; 
+            }
     }
 
     private void KillPlayer()
     {
-        timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
         playerRigidbody.sharedMaterial = bounceMaterial;
-        Destroy(boolets);
+        Destroy(bullets);
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
 
-    private void Jump()
-    {
-        Debug.Log("Jumping");
-        Vector2 jump = new Vector2(0, jumpForce * invertMod * Time.deltaTime);
-
-        playerRigidbody.AddForce(jump, ForceMode2D.Impulse);
-        // isJumping = true; 
-
-        // jump can only be called when on the ground
-        isOnGround = false; 
-    }
-
-    private void ActivateJetpack()
-    {
-        float boostFactor = 1.0f;
-        if (playerRigidbody.velocity.y < 0) // Adds small boost if falling
-            boostFactor += Mathf.Abs(playerRigidbody.velocity.y) / maxVerticalSpeed;
-        
-
-        Vector2 force = new Vector2(0, rocketForce * invertMod * boostFactor);
-
-        playerRigidbody.AddForce(force, ForceMode2D.Force);
-    }
-    private void InvertHandler()
-    {
-        if (!invert)
-        {
-            invertMod = 1;
-            playerTransform.transform.rotation = Quaternion.Euler(0, 0, 0);
-            return;
-        }
-
-        invertMod = -1; // invert mod is just to flip the gravity and forces when inverting.
-        playerTransform.transform.rotation = Quaternion.Euler(0, 180, 180);
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 6)  isOnGround = true;
-        if (collision.gameObject.tag == "Obstacle") KillPlayer();
+        if (collision.gameObject.layer == 6)
+            isOnGround = true;
+
+        // KEEP
+        if (collision.gameObject.tag == "Obstacle")
+            KillPlayer();
     }
 
-    // private void OnTriggerExit2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.layer == 6) isOnGround = false;
-    // }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 6)
+            isOnGround = true;
+    }
 
-    public bool GetJetpackStatus()
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if(jetpackEnabled)
+        if (collision.gameObject.layer == 6)
         {
-            return true;
-        }
-        else
-        {
-            return false;
+            isOnGround = false;
         }
     }
-    public bool GetPlayerDeathStatus()
-    {
-        if (playerIsDead)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+
+    public bool GetJetpackStatus() => jetpackEnabled;
+    public bool GetPlayerDeathStatus() => playerIsDead;
 }
