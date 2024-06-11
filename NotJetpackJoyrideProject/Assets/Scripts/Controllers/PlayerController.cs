@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxVerticalSpeed;
     [SerializeField] private float downwardForce;
     [SerializeField] bool invert = false;
-    [SerializeField] private PhysicsMaterial2D bounceMaterial;
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
@@ -27,6 +26,9 @@ public class PlayerController : MonoBehaviour
     private float timer = default;
     private bool playerIsDead = default;
     private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
+    private int bounceCount = 0;
+    private float groundTimer = 0;
+    private float deathVelocity;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -55,7 +57,21 @@ public class PlayerController : MonoBehaviour
 
         if (playerIsDead)
         {
-            if(gameManager.GetScrollSpeed() <= 0)
+            if(isOnGround && bounceCount < 3) 
+            { 
+                if (groundTimer > 0.05)
+                {
+                    playerRigidbody.AddForce(new Vector2(0, 100/(bounceCount+1)), ForceMode2D.Force);
+                    bounceCount++;
+                    groundTimer = 0;
+                    Debug.Log("Bounced");
+                }
+                else
+                {
+                    groundTimer += Time.deltaTime;
+                }
+            }
+            if (gameManager.GetScrollSpeed() <= 0)
             {
                 gameManager.LoadDeathScreen();
             }
@@ -126,8 +142,6 @@ public class PlayerController : MonoBehaviour
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
         playerRigidbody.gravityScale = 2.5f;
-        playerRigidbody.sharedMaterial = bounceMaterial;
-
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
