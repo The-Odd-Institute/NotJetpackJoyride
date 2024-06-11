@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class BackgroundCellController : MonoBehaviour
 {
@@ -17,6 +16,8 @@ public class BackgroundCellController : MonoBehaviour
     [SerializeField] private Transform groundList = default;
     [SerializeField] private Transform backGround1 = default;
     [SerializeField] private Transform backGround3 = default;
+    [SerializeField] private Transform backGround4 = default;
+    [SerializeField] private Transform backGround5 = default;
 
     private const int Y_MIN = -4;
     private const int Y_MAX = 5;
@@ -67,13 +68,17 @@ public class BackgroundCellController : MonoBehaviour
         RandomFront(groundList);
     }
 
-    private void GenerateCellBody()
+    private void GenerateCellBody(int cellCount, int cellCountMax)
     {
         // Random Background1 position
         int random = Random.Range(Y_MIN, Y_MAX);
         backGround1.localPosition = new Vector3(0.0f, backGround1.position.y + random, 0.0f);
 
-        if (random >= BG3_THRESHOLD_MIN && random <= BG3_THRESHOLD_MAX)
+        if (cellCount == 2 && cellCountMax == 3)
+            backGround4.gameObject.SetActive(true);
+        else if (cellCount == 3 && cellCountMax == 4)
+            backGround5.gameObject.SetActive(true);
+        else if (random >= BG3_THRESHOLD_MIN && random <= BG3_THRESHOLD_MAX)
             backGround3.gameObject.SetActive(true);
 
         // Random Ceiling
@@ -99,7 +104,7 @@ public class BackgroundCellController : MonoBehaviour
         RandomFront(groundList);
     }
 
-    public void GenerateCell()
+    public void GenerateCell(int cellCount, int cellCountMax)
     {
         ResetCell();
 
@@ -109,7 +114,7 @@ public class BackgroundCellController : MonoBehaviour
                 GenerateCellStart();
                 break;
             case CellType.Body:
-                GenerateCellBody();
+                GenerateCellBody(cellCount, cellCountMax);
                 break;
             case CellType.End:
                 GenerateCellEnd();

@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
+    private MusicSFXController musicSFXController;
+    private AudioSource audioSource;
 
+    private const float TimeToDeathScreen = 3.0f;
+    private float timer = default;
     private bool playerIsDead = default;
     private string locationOfScreenshot = "NotJetpackJoyrideProject\\Assets";
     void Start()
@@ -29,7 +33,8 @@ public class PlayerController : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        //playerRigidbody.sharedMaterial.bounciness = 1;
+        audioSource = GetComponent<AudioSource>();
+        musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
     void Update()
@@ -50,12 +55,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerIsDead)
         {
-            if (isOnGround)
-            {
-                playerRigidbody.velocity = new Vector2 (0, playerRigidbody.velocity.y * 0.2f);
-                //if(playerRigidbody.velocity.y < 3) { playerRigidbody.sharedMaterial = null; }
-            }
-            if (gameManager.GetScrollSpeed() <= 0)
+            if(gameManager.GetScrollSpeed() <= 0)
             {
                 gameManager.LoadDeathScreen();
             }
@@ -121,16 +121,20 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.PlayerDeath);
+        timer = 0.0f;
         animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
-        playerRigidbody.gravityScale = 2.0f;
+        playerRigidbody.gravityScale = 2.5f;
         playerRigidbody.sharedMaterial = bounceMaterial;
+
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
 
     private void StartJump()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.Jump);
         playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
         isJumping = true; 
         isOnGround = false; 
@@ -174,6 +178,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("detected");
             KillPlayer();
         }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            musicSFXController.PlaySound(audioSource, SoundType.CoinCollect);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -205,5 +214,10 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool GetPlayerIsOnGround()
+    {
+        return isOnGround;
     }
 }
