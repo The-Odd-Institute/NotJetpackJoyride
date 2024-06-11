@@ -5,6 +5,13 @@ public class RocketSpawner : MonoBehaviour
 {
     private static RocketSpawner instance = null;
     [SerializeField] GameObject rocket;
+
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
     private RocketSpawner()
     {
     }
@@ -23,6 +30,7 @@ public class RocketSpawner : MonoBehaviour
 
     private void Update()
     {
+        //transform.position = startPosition;
         if(Input.GetKeyDown(KeyCode.F))
         {
             SpawnTwoStaticRockets();

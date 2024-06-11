@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody;
-    public bool isOnGround = false;
+    private bool isOnGround = false;
     private bool isJumping = false;
     private bool jetpackEnabled = false;
     private int invertMod = 1;
     private Animator animator;
     private GameManager gameManager;
-    private ParticleSystem boolets;
+    private MusicSFXController musicSFXController;
+    private AudioSource audioSource;
 
     private const float TimeToDeathScreen = 3.0f;
     private float timer = default;
@@ -31,8 +32,9 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-        boolets = jetpack.GetComponent<ParticleSystem>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        audioSource = GetComponent<AudioSource>();
+        musicSFXController = FindAnyObjectByType<MusicSFXController>();
     }
 
     void Update()
@@ -55,8 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if(gameManager.GetScrollSpeed() <= 0)
             {
-                //
-                gameManager.LoadRevivalScreen();
+                gameManager.LoadDeathScreen();
             }
         }
     }
@@ -120,35 +121,20 @@ public class PlayerController : MonoBehaviour
 
     private void KillPlayer()
     {
-        if (!playerIsDead)
-        {
-            timer = 0.0f;
-            animator.SetLayerWeight(1, 1);
-            playerRigidbody.velocity = Vector2.zero;
-            playerRigidbody.gravityScale = 2.5f;
-            playerRigidbody.sharedMaterial = bounceMaterial;
-            boolets.Stop();
-            gameManager.CaptureScreenshot(locationOfScreenshot, 1);
-            playerIsDead = true;
-            gameManager.LoadRevivalScreen();
-        }
-    }
-    public void Revive()
-    {
-        playerIsDead = false;
-        animator.SetLayerWeight(1, 0);
+        musicSFXController.PlaySound(audioSource, SoundType.PlayerDeath);
+        timer = 0.0f;
+        animator.SetLayerWeight(1, 1);
         playerRigidbody.velocity = Vector2.zero;
-        playerRigidbody.gravityScale = 1.0f;
-        playerRigidbody.sharedMaterial = null;
-        boolets.Play();
-        isOnGround = false;
-        isJumping = false;
-        jetpackEnabled = false;
+        playerRigidbody.gravityScale = 2.5f;
+        playerRigidbody.sharedMaterial = bounceMaterial;
 
+        gameManager.CaptureScreenshot(locationOfScreenshot, 1);
+        playerIsDead = true;
     }
 
     private void StartJump()
     {
+        musicSFXController.PlaySound(audioSource, SoundType.Jump);
         playerRigidbody.AddForce(new Vector2(0, jumpForce * invertMod), ForceMode2D.Impulse);
         isJumping = true; 
         isOnGround = false; 
@@ -178,19 +164,24 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       // Debug.Log("Inside the trigger");
+        Debug.Log("Inside the trigger");
         if (collision.gameObject.layer == 6)
         {
             isOnGround = true;
             isJumping = false; // We reset isJumping here when we detect ground contact
         }
 
-        //Debug.Log(collision.gameObject.tag);
+        Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Obstacle")
         {
-          //  Debug.Log("detected");
+            Debug.Log("detected");
             KillPlayer();
+        }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            musicSFXController.PlaySound(audioSource, SoundType.CoinCollect);
         }
     }
 
@@ -223,5 +214,10 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public bool GetPlayerIsOnGround()
+    {
+        return isOnGround;
     }
 }

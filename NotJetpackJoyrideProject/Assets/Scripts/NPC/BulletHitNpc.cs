@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class BulletHitNpc : MonoBehaviour
 {
-    [SerializeField] GameObject Scientist;
+    //[SerializeField] GameObject Scientist;
     private void OnParticleCollision(GameObject collision)
     {
         Debug.Log("Collided with: " + collision.gameObject.name);
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Npc"))
+        if (collision.layer == 12)
         {
-            Debug.Log("hitbox hitted");
-            Scientist.GetComponent<scientist>().HandleDeath();
+            Debug.Log("Scientist shot");
+            collision.GetComponent<scientist>().HandleDeath();
         }
-
     }
 }

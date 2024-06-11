@@ -8,20 +8,25 @@ public class EntitySpawnManager : MonoBehaviour
     [SerializeField] private ZapperManager zapperManager;
     [SerializeField] private RocketManager rocketManager;
     [SerializeField] private LaserManager laserManager;
+    [SerializeField] private ScientistManager scientistManager;
     [SerializeField] private float zapperCoinSpawnDelay;
     [SerializeField] private float delayAfterCoinSpawn;
     [SerializeField] private float delayAfterZapperSpawn;
     [SerializeField] private float rocketLaserSpawnDelay;
     [SerializeField] private float delayAfterRocketSpawn;
     [SerializeField] private float delayAfterLaserSpawn;
+    [SerializeField] private float scientistSpawnDelay;
 
     private float currentZapperCoinTimer = 0.0f;
     private float currentRocketLaserTimer = 0.0f;
+
+    private float currentScientistTimer = 0.0f;
 
     public void Update()
     {
         currentZapperCoinTimer += Time.deltaTime;
         currentRocketLaserTimer += Time.deltaTime;
+        currentScientistTimer += Time.deltaTime;
 
         if (currentZapperCoinTimer > zapperCoinSpawnDelay)
         {
@@ -52,6 +57,16 @@ public class EntitySpawnManager : MonoBehaviour
                 rocketLaserSpawnDelay = delayAfterRocketSpawn;
             }
             currentRocketLaserTimer = 0.0f;
+        }
+        if (currentScientistTimer > scientistSpawnDelay)
+        {
+            int numScientists = Random.Range(1, 4);
+            for (int i = 0; i < numScientists; ++i)
+            {
+                float distanceVariance = Random.Range(0.1f, 0.9f);
+                scientistManager.Invoke("SpawnScientist", (float)i + distanceVariance);
+            }
+            currentScientistTimer = 0.0f;
         }
     }
 }

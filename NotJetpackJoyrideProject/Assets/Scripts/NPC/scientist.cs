@@ -10,6 +10,7 @@ public class scientist : MonoBehaviour
     private Rigidbody2D rb;
 
     bool playerIsInDetectionRange = false;
+    bool isDead = false;
     int playerLayer;
     void Start()
     {
@@ -21,6 +22,11 @@ public class scientist : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            rb.velocity = new Vector2(speed, rb.velocity.y);
+            return;
+        }
         if (speed != 0)
         {
             float moveSpeed = playerIsInDetectionRange ? speed : -speed;
@@ -50,33 +56,36 @@ public class scientist : MonoBehaviour
     }
     private void CheckPlayerFlying(Collider2D other)
     {
-
-        if (!other.gameObject.GetComponent<PlayerController>().isOnGround)
+        if (!isDead)
         {
-            if (!playerIsInDetectionRange)
+            if (!other.gameObject.GetComponent<PlayerController>().GetPlayerIsOnGround())
             {
-                playerIsInDetectionRange = true;
-                animator.SetBool("DetectedPlayer", true);
-                ChangeDirection();
+                if (!playerIsInDetectionRange)
+                {
+                    playerIsInDetectionRange = true;
+                    animator.SetBool("DetectedPlayer", true);
+                    ChangeDirection();
+                }
             }
-        }
-        else
-        {
-            playerIsInDetectionRange = false;
-            animator.SetBool("DetectedPlayer", false);
+            else
+            {
+                playerIsInDetectionRange = false;
+                animator.SetBool("DetectedPlayer", false);
+            }
         }
     }
     public void HandleDeath()
     {
         Debug.Log("npc is dead");
         animator.SetBool("HasBeenHited", true);
-
+        isDead = true;
+        speed = -10;
     }
 
     private void ChangeDirection()
     {
         int direction = Random.Range(0, 2) * 2 - 1;
-        speed = Mathf.Abs(speed) * 1.2f * direction;
+        speed = Mathf.Abs(speed) * direction;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
@@ -86,7 +95,7 @@ public class scientist : MonoBehaviour
     }
     private void FlipSprite()
     {    
-       transform.localScale = new Vector3(Mathf.Sign(-speed), 1, 1);   
+       transform.localScale = new Vector3(Mathf.Sign(speed), 1, 1);   
     }
 }
 
