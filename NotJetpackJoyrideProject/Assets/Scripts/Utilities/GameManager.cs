@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if (isRevivalScreenActive)
         {
-            Debug.Log("Revival screen is active, timer: " + timer); 
+            //Debug.Log("Revival screen is active, timer: " + timer); 
             timer += Time.deltaTime;
             if (timer >= revivalTime)
             {

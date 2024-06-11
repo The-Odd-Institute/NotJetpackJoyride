@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour
         {
             if(gameManager.GetScrollSpeed() <= 0)
             {
-                gameManager.LoadDeathScreen();
+                gameManager.LoadRevivalScreen();
             }
         }
     }
@@ -131,6 +132,19 @@ public class PlayerController : MonoBehaviour
         gameManager.CaptureScreenshot(locationOfScreenshot, 1);
         playerIsDead = true;
     }
+    public void Revive()
+    {
+        Debug.Log("calling revive in player");
+
+        playerIsDead = false;        
+        animator.SetLayerWeight(1, 0);    
+        playerRigidbody.velocity = Vector2.zero;
+        playerRigidbody.gravityScale = 1.0f; 
+        playerRigidbody.sharedMaterial = null; 
+        isOnGround = false;                
+        isJumping = false;                
+        jetpackEnabled = false;          
+    }
 
     private void StartJump()
     {
@@ -164,7 +178,7 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Inside the trigger");
+      //  Debug.Log("Inside the trigger");
         if (collision.gameObject.layer == 6)
         {
             isOnGround = true;

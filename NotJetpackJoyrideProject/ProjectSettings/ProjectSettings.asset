@@ -874,7 +874,8 @@ PlayerSettings:
   XboxOneOverrideIdentityName: 
   XboxOneOverrideIdentityPublisher: 
   vrEditorSettings: {}
-  cloudServicesEnabled: {}
+  cloudServicesEnabled:
+    Unity Ads: 0
   luminIcon:
     m_Name: 
     m_ModelFolderPath: 
@@ -894,11 +895,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: ac75001f-2c0b-444b-bde5-252b1a01ee1a
+  cloudProjectId: e9044d02-18ee-467c-a096-8cfa734e1988
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Jetpack
-  organizationId: tpbao122
+  projectName: NotJetpackJoyrideProject
+  organizationId: tlacuacheveloz25
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
