@@ -885,7 +885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &535160638
 RectTransform:
   m_ObjectHideFlags: 0
@@ -904,7 +904,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 24.23169, y: 40.89102}
-  m_SizeDelta: {x: 208.4634, y: 111.782}
+  m_SizeDelta: {x: 359.5, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535160639
 MonoBehaviour:
@@ -2012,10 +2012,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Revive
+
+'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c7961caf568a942a8b56f1c9895b8a45, type: 2}
+  m_sharedMaterial: {fileID: -235155373016164818, guid: c7961caf568a942a8b56f1c9895b8a45, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2039,8 +2041,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 65.9
+  m_fontSizeBase: 65.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
